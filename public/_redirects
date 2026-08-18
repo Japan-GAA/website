@@ -1,0 +1,12 @@
+# Old Squarespace URLs -> new site.  Order matters: first match wins.
+/home              /             301
+/homejp            /ja/          301
+/historyjp         /ja/history   301
+/profiles          /committee    301
+/eventlist         /training     301
+/eventlist/*       /training     301
+/newsletter        /news         301
+/newsletter/*      /news/:splat  301
+/about-us          /             301
+/news-1            /news         301
+/cover-page        /             301

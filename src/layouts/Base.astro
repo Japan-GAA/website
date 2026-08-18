@@ -1,0 +1,79 @@
+---
+import { SITE, PAGES } from "../consts.js";
+import "../styles/global.css";
+
+const { title, description, lang = "en", pageKey } = Astro.props;
+const other = lang === "en" ? "ja" : "en";
+const page  = PAGES.find((p) => p.key === pageKey);
+const nav   = PAGES.filter((p) => p.key !== "home");
+const here  = Astro.url.pathname;
+
+const socials = [
+  ["Instagram", "https://www.instagram.com/japangaa"],
+  ["Facebook",  "https://www.facebook.com/gaajapan"],
+];
+---
+<!doctype html>
+<html lang={lang === "ja" ? "ja" : "en"}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(here, SITE.url)} />
+    {page && (
+      <>
+        <link rel="alternate" hreflang="en" href={new URL(page.en, SITE.url)} />
+        <link rel="alternate" hreflang="ja" href={new URL(page.ja, SITE.url)} />
+        <link rel="alternate" hreflang="x-default" href={new URL(page.en, SITE.url)} />
+      </>
+    )}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={new URL("/badge.png", SITE.url)} />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" href="/badge.png" />
+    <meta property="og:url" content={new URL(here, SITE.url)} />
+    <meta property="og:locale" content={lang === "ja" ? "ja_JP" : "en_IE"} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="wrap masthead__inner">
+        <a class="wordmark" href={lang === "ja" ? "/ja/" : "/"}>
+          <img class="badge" src="/badge.png" alt="" width="44" height="44" />
+          <span class="wordmark__text">Japan <span>GAA</span></span>
+        </a>
+        <nav class="nav" aria-label={lang === "ja" ? "メインナビゲーション" : "Main"}>
+          {nav.map((p) => (
+            <a href={p[lang]} aria-current={here.replace(/\/$/, "") === p[lang].replace(/\/$/, "") ? "page" : undefined}>
+              {lang === "ja" ? p.labelJa : p.labelEn}
+            </a>
+          ))}
+        </nav>
+        {page && (
+          <a class="lang" href={page[other]} lang={other} hreflang={other}>
+            {other === "ja" ? "日本語" : "English"}
+          </a>
+        )}
+      </div>
+    </header>
+
+    <main><slot /></main>
+
+    <footer class="foot">
+      <div class="wrap">
+        <p class="foot__contact">
+          Please contact <a href="mailto:japangaa@gmail.com">japangaa@gmail.com</a> for your questions!<br />
+          練習やイベント参加に関するご質問は <a href="mailto:japangaa@gmail.com">japangaa@gmail.com</a> までお問い合わせください！
+        </p>
+        <p class="foot__social">
+          {socials.map(([name, url]) => <a href={url} rel="me noopener">{name}</a>)}
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,205 @@
+/* Japan GAA — Irish green against hinomaru red, set on chalk.
+   Display face is Bricolage Grotesque; Noto Sans JP carries both
+   scripts so English and Japanese pages feel like one site. */
+
+:root {
+  --ink:        #10221b;
+  --pitch:      #14663f;
+  --pitch-lift: #1b8452;
+  --vermilion:  #bc002d;
+  --chalk:      #fafaf7;
+  --stone:      #7d8a83;
+  --line:       #dcded8;
+
+  --display: "Bricolage Grotesque", "Noto Sans JP", system-ui, sans-serif;
+  --body:    "Noto Sans JP", system-ui, -apple-system, sans-serif;
+
+  --measure: 34rem;
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--chalk);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  font-feature-settings: "palt" 1; /* tightens Japanese punctuation */
+}
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5em;
+  text-wrap: balance;
+}
+
+h1 { font-size: clamp(2.75rem, 9vw, 5.5rem); }
+h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
+h3 { font-size: 1.25rem; }
+
+p { max-width: var(--measure); }
+
+a { color: var(--pitch); text-underline-offset: 0.2em; }
+a:hover { color: var(--vermilion); }
+
+:focus-visible {
+  outline: 3px solid var(--vermilion);
+  outline-offset: 3px;
+}
+
+.wrap { width: min(72rem, 100%); margin-inline: auto; padding-inline: var(--gutter); }
+.stack > * + * { margin-top: 1.5rem; }
+
+/* ---- header ---- */
+.masthead {
+  border-bottom: 1px solid var(--line);
+  background: var(--chalk);
+  position: sticky; top: 0; z-index: 10;
+}
+.masthead__inner {
+  display: flex; align-items: center; gap: 1.5rem;
+  min-height: 4.5rem; flex-wrap: wrap;
+}
+.wordmark {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  margin-right: auto;
+}
+.wordmark span { color: var(--vermilion); }
+
+.nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+.nav a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.9375rem;
+  padding-block: 0.25rem;
+  border-bottom: 2px solid transparent;
+}
+.nav a:hover, .nav a[aria-current="page"] {
+  border-bottom-color: var(--vermilion);
+}
+
+.lang {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--pitch);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+}
+.lang:hover { border-color: var(--vermilion); }
+
+/* ---- hero: the H-post is the signature ---- */
+.hero {
+  padding-block: clamp(3rem, 9vw, 6.5rem);
+  display: grid;
+  gap: clamp(2rem, 6vw, 4rem);
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+@media (min-width: 62rem) {
+  .hero { grid-template-columns: 1.35fr 1fr; }
+}
+.hero__eyebrow {
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--vermilion);
+  margin: 0 0 1.25rem;
+}
+.hero__lede { font-size: 1.1875rem; color: #2c3d35; }
+
+.posts { width: 100%; height: auto; display: block; }
+.posts .bar { stroke: var(--pitch); stroke-width: 7; stroke-linecap: square; }
+.posts .ball { fill: var(--vermilion); }
+@media (prefers-reduced-motion: no-preference) {
+  .posts .ball {
+    animation: over 2.6s cubic-bezier(.3,.7,.4,1) 0.4s both;
+  }
+  @keyframes over {
+    from { transform: translate(-120px, 150px) scale(.7); opacity: 0; }
+    60%  { opacity: 1; }
+    to   { transform: translate(0,0) scale(1); opacity: 1; }
+  }
+}
+
+/* ---- call to action ---- */
+.cta {
+  display: inline-block;
+  background: var(--pitch);
+  color: var(--chalk);
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0.85rem 1.75rem;
+  border-radius: 2px;
+}
+.cta:hover { background: var(--vermilion); color: var(--chalk); }
+
+/* ---- panels ---- */
+.panel { border-top: 1px solid var(--line); padding-block: clamp(2.5rem, 6vw, 4.5rem); }
+.cards { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+.card { border-left: 3px solid var(--pitch); padding-left: 1.25rem; }
+.card h3 { margin-bottom: 0.25rem; }
+.card p { font-size: 0.9375rem; color: #3a4b43; margin: 0; }
+
+.foot {
+  border-top: 1px solid var(--line);
+  padding-block: 2.5rem;
+  font-size: 0.875rem;
+  color: var(--stone);
+}
+
+/* ---- footer additions ---- */
+.foot__contact { max-width: none; color: var(--stone); }
+.foot__contact a { color: var(--pitch); }
+.foot__social { display: flex; gap: 1.25rem; margin-top: 1rem; }
+.hero h1 em { font-style: italic; font-weight: 600; color: var(--pitch); display: block; font-size: 0.5em; margin-top: 0.25em; }
+.card p + p { margin-top: 0.5rem; }
+.card p a { font-weight: 600; text-decoration: none; }
+.card p a:hover { text-decoration: underline; }
+
+/* ---- badge + hero band ---- */
+.wordmark { display: flex; align-items: center; gap: 0.6rem; }
+.badge { width: 44px; height: 44px; object-fit: contain; display: block; }
+.wordmark__text { line-height: 1; }
+@media (max-width: 30rem) { .wordmark__text { display: none; } }
+
+.band { margin: 0 0 clamp(2rem, 5vw, 3.5rem); }
+.band img {
+  width: 100%;
+  height: clamp(16rem, 42vw, 30rem);
+  object-fit: cover;
+  display: block;
+  border-block: 1px solid var(--line);
+}
+
+/* ---- badge + hero band ---- */
+.wordmark { display: flex; align-items: center; gap: 0.6rem; }
+.badge { width: 44px; height: 44px; object-fit: contain; display: block; }
+.wordmark__text { line-height: 1; }
+@media (max-width: 30rem) { .wordmark__text { display: none; } }
+
+.band { margin: 0 0 clamp(2rem, 5vw, 3.5rem); }
+.band img {
+  width: 100%;
+  height: clamp(16rem, 42vw, 30rem);
+  object-fit: cover;
+  display: block;
+  border-block: 1px solid var(--line);
+}

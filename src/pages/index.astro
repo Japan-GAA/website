@@ -1,17 +1,79 @@
 ---
-
+import { Image } from "astro:assets";
+import hero from "../assets/hero.jpg";
+import Base from "../layouts/Base.astro";
 ---
+<Base
+  lang="en"
+  pageKey="home"
+  title="Japan GAA — Gaelic Football in Tokyo | ゲーリックフットボール"
+  description="The official website of the Japan Gaelic Athletic Association. Home to the Gaelic Games in Japan — training, tournaments and social events in Tokyo."
+>
+  <div class="wrap hero">
+    <div>
+      <p class="hero__eyebrow">Tokyo · 東京</p>
+      <h1>Welcome <em>Céad míle fáilte</em></h1>
+      <p class="hero__lede">
+        Welcome to the official website of Japan GAA, home to the Gaelic Games
+        in Japan. You can find all you need to know about the history of our
+        club, as well as information on upcoming training sessions, tournaments,
+        and social events.
+      </p>
+      <p><a class="cta" href="/training">Upcoming training →</a></p>
+    </div>
+    <svg class="posts" viewBox="0 0 320 260" role="img" aria-label="Gaelic football posts">
+      <g class="bar" fill="none">
+        <line x1="90" y1="30" x2="90" y2="240" />
+        <line x1="230" y1="30" x2="230" y2="240" />
+        <line x1="70" y1="150" x2="250" y2="150" />
+        <line x1="40" y1="240" x2="280" y2="240" />
+      </g>
+      <circle class="ball" cx="160" cy="88" r="15" />
+    </svg>
+  </div>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+  <figure class="band">
+    <Image src={hero} alt="Japan GAA players at a tournament" widths={[640, 1024, 1600]} sizes="100vw" loading="eager" />
+  </figure>
+
+  <section class="panel">
+    <div class="wrap cards">
+      <div class="card">
+        <h3>Our history</h3>
+        <p>Find out more about our history.</p>
+        <p><a href="/history">Learn more →</a></p>
+      </div>
+      <div class="card">
+        <h3>Upcoming events</h3>
+        <p>Training sessions, tournaments and social events.</p>
+        <p><a href="/training">Learn more →</a></p>
+      </div>
+      <div class="card">
+        <h3>Who we are</h3>
+        <p>The committee and the players.</p>
+        <p><a href="/committee">Meet the team →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="wrap">
+      <h2>Latest news</h2>
+      <p>Take a look at our newsletter for all that's happening at the club.</p>
+      <p><a href="/news">Read the newsletter →</a></p>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="wrap">
+      <h2>Membership</h2>
+      <p>
+        Interested? Join a community that is passionate, determined, and
+        supportive. Whether you're here for a day or committed to years, feel
+        free to join us here at Japan GAA.
+      </p>
+      <!-- TODO: fees and payment method from the LINE note -->
+      <p><a class="cta" href="mailto:japangaa@gmail.com">Contact us</a></p>
+    </div>
+  </section>
+</Base>
