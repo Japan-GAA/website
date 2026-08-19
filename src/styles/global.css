@@ -558,3 +558,12 @@ a:hover { color: var(--vermilion); }
 .fact .muted { font-size: 0.875rem; }
 
 .dot--two { background: #e08a1e; }
+
+/* Committee roster: one name per line, so pairs don't wrap awkwardly. */
+.roster__names { display: flex; flex-direction: column; align-items: flex-end; gap: 0.15rem; }
+.roster li { align-items: baseline; }
+@media (max-width: 30rem) {
+  .roster li { flex-direction: column; gap: 0.35rem; }
+  .roster__names { align-items: flex-start; }
+  .roster__role { align-self: flex-start; }
+}

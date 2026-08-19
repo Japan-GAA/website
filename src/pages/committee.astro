@@ -12,10 +12,6 @@ import { COMMITTEE } from "../committee.js";
   <div class="wrap prose">
     <header class="pagehead">
       <h1>The club</h1>
-      <p class="hero__lede">
-        Japan GAA is run entirely by volunteers. These are the people who
-        organise the training, the tournaments and everything in between.
-      </p>
     </header>
 
     <Photo src={PHOTOS.committee} alt="The Japan GAA committee" wide />
@@ -25,14 +21,13 @@ import { COMMITTEE } from "../committee.js";
       {COMMITTEE.map((r) => (
         <li>
           <span class="roster__role">{r.roleEn}</span>
-          <span class="roster__name">{r.people.join(" · ")}</span>
+          <span class="roster__names">
+            {r.people.map((n) => <span class="roster__name">{n}</span>)}
+          </span>
         </li>
       ))}
     </ul>
-    <p class="muted">
-      For anything at all, <a href="mailto:japangaa@gmail.com">japangaa@gmail.com</a>
-      reaches the committee.
-    </p>
+    <p class="muted">For anything at all, <a href="mailto:japangaa@gmail.com">japangaa@gmail.com</a> reaches the committee.</p>
 
     <h2>The squads</h2>
     <p>

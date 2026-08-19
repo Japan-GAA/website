@@ -12,10 +12,6 @@ import { COMMITTEE } from "../../committee.js";
   <div class="wrap prose">
     <header class="pagehead">
       <h1>クラブについて</h1>
-      <p class="hero__lede">
-        Japan GAAはすべてボランティアによって運営されています。
-        練習や大会の運営を担っているメンバーをご紹介します。
-      </p>
     </header>
 
     <Photo src={PHOTOS.committee} alt="Japan GAAの運営メンバー" wide />
@@ -25,14 +21,13 @@ import { COMMITTEE } from "../../committee.js";
       {COMMITTEE.map((r) => (
         <li>
           <span class="roster__role">{r.roleJa}</span>
-          <span class="roster__name">{r.people.join(" ・ ")}</span>
+          <span class="roster__names">
+            {r.people.map((n) => <span class="roster__name">{n}</span>)}
+          </span>
         </li>
       ))}
     </ul>
-    <p class="muted">
-      ご質問は <a href="mailto:japangaa@gmail.com">japangaa@gmail.com</a> まで、
-      お気軽にお問い合わせください。
-    </p>
+    <p class="muted">ご質問は <a href="mailto:japangaa@gmail.com">japangaa@gmail.com</a> まで、お気軽にお問い合わせください。</p>
 
     <h2>チーム</h2>
     <p>
