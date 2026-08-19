@@ -1,4 +1,5 @@
 ---
+import Sessions from "../components/Sessions.astro";
 import Base from "../layouts/Base.astro";
 const MAP = "https://maps.app.goo.gl/DLmB27aQEgWyWzAp7";
 ---
@@ -30,9 +31,12 @@ const MAP = "https://maps.app.goo.gl/DLmB27aQEgWyWzAp7";
       </div>
 
       <div class="fact">
-        <h2>When</h2>
-        <!-- TODO: training days and times. Not in the LINE note. -->
-        <p>Get in touch and we'll tell you when the next session is.</p>
+        <h2>Next sessions</h2>
+        <Sessions lang="en" />
+        <p class="muted">
+          Sessions run 7–9pm. The day of the week changes, so check back here or
+          on <a href="https://www.instagram.com/japangaa">Instagram</a>.
+        </p>
         <p><a href="mailto:japangaa@gmail.com">japangaa@gmail.com</a></p>
       </div>
 

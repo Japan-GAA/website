@@ -1,0 +1,16 @@
+# Rebuilds the site once a day so newly added training sessions appear.
+# Requires repository secret CF_DEPLOY_HOOK (Cloudflare -> project -> Settings
+# -> Builds -> Deploy hooks).
+name: Daily rebuild
+
+on:
+  schedule:
+    - cron: "0 20 * * *"   # 05:00 JST
+  workflow_dispatch:        # lets anyone trigger it by hand from the Actions tab
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cloudflare build
+        run: curl -fsS -X POST "${{ secrets.CF_DEPLOY_HOOK }}"

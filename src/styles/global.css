@@ -284,3 +284,14 @@ a:hover { color: var(--vermilion); }
   font-size: 1.0625rem;
 }
 .muted { color: var(--stone); font-size: 0.9375rem; }
+
+/* ---- upcoming sessions ---- */
+.sessions { list-style: none; margin: 0 0 0.75rem; padding: 0; }
+.sessions li {
+  display: flex; justify-content: space-between; gap: 1rem;
+  padding: 0.5rem 0; border-bottom: 1px solid var(--line);
+  font-size: 0.9375rem;
+}
+.sessions li:last-child { border-bottom: 0; }
+.sessions__date { font-weight: 500; }
+.sessions__time { color: var(--pitch); font-family: var(--display); font-weight: 700; }

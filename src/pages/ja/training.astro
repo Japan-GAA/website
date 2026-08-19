@@ -1,4 +1,5 @@
 ---
+import Sessions from "../../components/Sessions.astro";
 import Base from "../../layouts/Base.astro";
 const MAP = "https://maps.app.goo.gl/DLmB27aQEgWyWzAp7";
 ---
@@ -28,9 +29,14 @@ const MAP = "https://maps.app.goo.gl/DLmB27aQEgWyWzAp7";
       </div>
 
       <div class="fact">
-        <h2>日時</h2>
-        <!-- TODO: 練習日・時間 -->
-        <p>次回の練習日については、お気軽にお問い合わせください。</p>
+        <h2>次回の練習</h2>
+        <Sessions lang="ja" />
+        <p class="muted">
+          練習は 19:00〜21:00 です。曜日は回によって変わりますので、
+          こちらのページまたは
+          <a href="https://www.instagram.com/japangaa">Instagram</a>
+          をご確認ください。
+        </p>
         <p><a href="mailto:japangaa@gmail.com">japangaa@gmail.com</a></p>
       </div>
 
