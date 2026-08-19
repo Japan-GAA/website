@@ -636,3 +636,32 @@ a:hover { color: var(--vermilion); }
 .social { gap: 1rem; }
 .social a { width: 3.5rem; height: 3.5rem; border-width: 2px; }
 .social svg { width: 1.75rem; height: 1.75rem; }
+
+/* ---- news archive by year ---- */
+.archive { margin-bottom: 3rem; }
+.archive__year {
+  font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.16em;
+  color: var(--vermilion); border-top: 2px solid var(--vermilion);
+  padding-top: 0.6rem; margin: 0 0 1.5rem;
+}
+.archive .newsgrid { margin-top: 0; }
+
+/* ---- placeholder cover ---- */
+.newsgrid a:not(:has(img))::before,
+.postlist__item a:not(:has(img))::before { content: none; }
+
+.cover--none {
+  display: grid; place-items: center;
+  aspect-ratio: 3 / 2; width: 100%;
+  background: var(--pitch); color: var(--chalk);
+  border-radius: 3px; margin-bottom: 0.75rem;
+}
+.cover--none svg { width: 45%; height: auto; opacity: 0.55; }
+.postlist__item .cover--none { width: 7rem; height: 5rem; aspect-ratio: auto; margin: 0; }
+
+/* Badge as the placeholder cover. Overrides the goalposts version above. */
+.cover--none { background: var(--chalk); border: 1px solid var(--line); }
+.cover--none img {
+  width: 55%; height: 55%; object-fit: contain; margin: 0; border-radius: 0;
+}
+.postlist__item .cover--none img { width: 70%; height: 70%; }

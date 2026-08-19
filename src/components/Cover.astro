@@ -1,0 +1,12 @@
+---
+// Card image for a news post. Posts with no photo show the club badge
+// rather than a borrowed photo from some other event.
+const { src, title = "" } = Astro.props;
+---
+{src ? (
+  <img src={src} alt="" loading="lazy" />
+) : (
+  <span class="cover--none" role="img" aria-label={title}>
+    <img src="/badge.png" alt="" loading="lazy" />
+  </span>
+)}

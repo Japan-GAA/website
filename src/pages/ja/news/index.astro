@@ -1,28 +1,36 @@
 ---
+import Cover from "../../../components/Cover.astro";
 import Base from "../../../layouts/Base.astro";
 import { newsFor, urlFor } from "../../../lib/news";
 const posts = await newsFor("ja");
-const fmt = (d: Date) => d.toLocaleDateString("ja-JP", { year: "numeric", month: "long" });
+
+// group by year, newest first
+const years = [...new Set(posts.map((p) => p.data.date.getFullYear()))].sort((a, b) => b - a);
+const fmt = (d) => d.toLocaleDateString("ja-JP", { timeZone: "Asia/Tokyo", month: "long" });
 ---
-<Base lang="ja" pageKey="news" title="ニュース — Japan GAA"
-  description="Japan GAAの活動報告・大会結果と、2019年からのニュースレターのアーカイブです。">
+<Base lang="ja" pageKey="news" title="ニュース・アーカイブ — Japan GAA"
+  description="Japan GAAの活動報告と、2019年からのニュースレター・アーカイブ。大会、練習、イベントの記録と写真。">
   <div class="wrap">
     <header class="pagehead">
       <h1>ニュース</h1>
-      <p>クラブの活動内容と、2019年からのニュースレターのアーカイブです。</p>
+      <p class="hero__lede">クラブの活動内容と、2019年からのアーカイブです。</p>
     </header>
-    <ul class="postlist">
-      {posts.map((post) => (
-        <li class="postlist__item">
-          <a href={urlFor(post.id)}>
-            {post.data.cover && <img src={post.data.cover} alt="" loading="lazy" width="400" height="260" />}
-            <div>
-              <time datetime={post.data.date.toISOString()}>{fmt(post.data.date)}</time>
-              <h2>{post.data.title}</h2>
-            </div>
-          </a>
-        </li>
-      ))}
-    </ul>
+
+    {years.map((year) => (
+      <section class="archive">
+        <h2 class="archive__year">{year}</h2>
+        <ul class="newsgrid">
+          {posts.filter((p) => p.data.date.getFullYear() === year).map((post) => (
+            <li>
+              <a href={urlFor(post.id)}>
+                <Cover src={post.data.cover} title={post.data.title} />
+                <time>{fmt(post.data.date)}</time>
+                <h3>{post.data.title}</h3>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
   </div>
 </Base>

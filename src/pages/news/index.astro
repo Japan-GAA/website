@@ -1,28 +1,36 @@
 ---
+import Cover from "../../components/Cover.astro";
 import Base from "../../layouts/Base.astro";
 import { newsFor, urlFor } from "../../lib/news";
 const posts = await newsFor("en");
-const fmt = (d: Date) => d.toLocaleDateString("en-IE", { year: "numeric", month: "long" });
+
+// group by year, newest first
+const years = [...new Set(posts.map((p) => p.data.date.getFullYear()))].sort((a, b) => b - a);
+const fmt = (d) => d.toLocaleDateString("en-IE", { timeZone: "Asia/Tokyo", month: "long" });
 ---
-<Base lang="en" pageKey="news" title="News — Japan GAA"
-  description="Reports, results and club news from Japan GAA, plus the full newsletter archive from 2019 onwards.">
+<Base lang="en" pageKey="news" title="News and archive — Japan GAA"
+  description="Club news from Japan GAA, plus the full newsletter archive going back to 2019 — tournaments, training, socials and photos.">
   <div class="wrap">
     <header class="pagehead">
       <h1>News</h1>
-      <p>Everything happening at the club, and the full newsletter archive back to 2019.</p>
+      <p class="hero__lede">Everything happening at the club, and the full archive back to 2019.</p>
     </header>
-    <ul class="postlist">
-      {posts.map((post) => (
-        <li class="postlist__item">
-          <a href={urlFor(post.id)}>
-            {post.data.cover && <img src={post.data.cover} alt="" loading="lazy" width="400" height="260" />}
-            <div>
-              <time datetime={post.data.date.toISOString()}>{fmt(post.data.date)}</time>
-              <h2>{post.data.title}</h2>
-            </div>
-          </a>
-        </li>
-      ))}
-    </ul>
+
+    {years.map((year) => (
+      <section class="archive">
+        <h2 class="archive__year">{year}</h2>
+        <ul class="newsgrid">
+          {posts.filter((p) => p.data.date.getFullYear() === year).map((post) => (
+            <li>
+              <a href={urlFor(post.id)}>
+                <Cover src={post.data.cover} title={post.data.title} />
+                <time>{fmt(post.data.date)}</time>
+                <h3>{post.data.title}</h3>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
   </div>
 </Base>
