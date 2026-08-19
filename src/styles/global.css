@@ -556,3 +556,5 @@ a:hover { color: var(--vermilion); }
   width: 0.4rem; height: 0.4rem; border-radius: 50%; background: var(--vermilion);
 }
 .fact .muted { font-size: 0.875rem; }
+
+.dot--two { background: #e08a1e; }

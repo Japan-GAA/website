@@ -4,6 +4,8 @@ const goal  = lang === "ja" ? "ゴール = 3点"  : "Goal — 3 points";
 const point = lang === "ja" ? "ポイント = 1点" : "Point — 1 point";
 const under = lang === "ja" ? "バーの下・ネットの中" : "under the bar, into the net";
 const over  = lang === "ja" ? "バーの上" : "over the bar";
+const two   = lang === "ja" ? "2ポイント = 2点" : "Two-pointer — 2 points";
+const arc   = lang === "ja" ? "40mアークの外から" : "from outside the 40m arc";
 ---
 <figure class="scoring">
   <svg viewBox="0 0 340 250" role="img" aria-label={`${goal} / ${point}`}>
@@ -19,6 +21,7 @@ const over  = lang === "ja" ? "バーの上" : "over the bar";
   </svg>
   <figcaption>
     <p><span class="dot dot--point"></span><strong>{point}</strong> — {over}</p>
+    <p><span class="dot dot--two"></span><strong>{two}</strong> — {arc}</p>
     <p><span class="dot dot--goal"></span><strong>{goal}</strong> — {under}</p>
   </figcaption>
 </figure>
