@@ -509,3 +509,14 @@ a:hover { color: var(--vermilion); }
 
 /* strip sitting at the very top of a page needs no space above it */
 .prose > .collage--strip:first-child { margin-top: 0; margin-bottom: 0; }
+
+/* Three-photo mosaic: one wide across the top, two beneath.
+   Overrides the earlier .collage--3 rule. */
+.collage--3 {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.8fr 1fr;
+  aspect-ratio: 1 / 1;
+}
+.collage--3 figure:nth-child(1) { grid-column: 1 / -1; grid-row: 1; }
+.collage--3 figure:nth-child(2) { grid-column: 1; grid-row: 2; }
+.collage--3 figure:nth-child(3) { grid-column: 2; grid-row: 2; }

@@ -18,13 +18,12 @@ export const PHOTOS = {
 };
 
 export const COLLAGE = [
-  // Reorder these freely — position 1 is tall on the left, 2 is top-right,
-  // 3 is tall on the bottom-right, 4 is bottom-left.
-  // TODO: replace each alt with a real description of that photo.
-  { src: "/photos/collage-1.webp", alt: "Japan GAA" },
-  { src: "/photos/collage-2.webp", alt: "Japan GAA" },
-  { src: "/photos/collage-3.webp", alt: "Japan GAA" },
+  // Three photos: 1 runs full width across the top, 2 and 3 sit side by side
+  // beneath it. TODO: replace each alt with a real description.
   { src: "/photos/hero.webp", alt: "Japan GAA players in action" },
+  { src: "/photos/collage-1.webp", alt: "Japan GAA" },
+  { src: "/photos/collage-3.webp", alt: "Japan GAA" },
+  // spare: { src: "/photos/collage-2.webp", alt: "Japan GAA" },
   // spare: { src: "/photos/collage-4.webp", alt: "Japan GAA" },
 ];
 
