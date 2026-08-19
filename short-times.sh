@@ -1,3 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+[ -f astro.config.mjs ] || { echo "Run this from ~/website"; exit 1; }
+
+cat > src/components/Sessions.astro <<'EOF'
 ---
 import { upcomingSessions } from "../lib/calendar";
 const { lang = "en" } = Astro.props;
@@ -54,3 +59,6 @@ const range = (start: Date, end?: Date) => {
       : "Check Instagram or get in touch for the next session."}
   </p>
 )}
+EOF
+
+echo "Sessions.astro rewritten — npm run dev"

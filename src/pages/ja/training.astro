@@ -10,7 +10,8 @@ const MAP = "https://maps.app.goo.gl/DLmB27aQEgWyWzAp7";
   description="Japan GAAは品川区の八潮北公園で練習しています。未経験者大歓迎、初回参加は無料です。">
 
   <div class="wrap">
-    <header class="pagehead">
+    <div class="trainhead">
+      <header class="pagehead">
       <h1>練習について</h1>
       <p class="hero__lede">
         初回参加は無料です。未経験の方も大歓迎ですので、お気軽にご参加ください。
@@ -18,6 +19,16 @@ const MAP = "https://maps.app.goo.gl/DLmB27aQEgWyWzAp7";
         ありませんでした。ルールを知らなくても大丈夫です。
       </p>
     </header>
+      <aside class="nextup">
+        <h2>次回の練習</h2>
+        <Sessions lang="ja" />
+        <p class="muted">
+          品川区・八潮北公園にて 19時〜21時。曜日は回によって変わりますので、
+          こちらまたは <a href="https://www.instagram.com/japangaa">Instagram</a>
+          をご確認ください。
+        </p>
+      </aside>
+    </div>
 
     <Photo src={PHOTOS.training} alt="Japan GAAの練習風景" wide />
 
@@ -37,25 +48,13 @@ const MAP = "https://maps.app.goo.gl/DLmB27aQEgWyWzAp7";
       </div>
 
       <div class="fact">
-        <h2>次回の練習</h2>
-        <Sessions lang="ja" />
-        <p class="muted">
-          練習は 19:00〜21:00 です。曜日は回によって変わりますので、
-          こちらのページまたは
-          <a href="https://www.instagram.com/japangaa">Instagram</a>
-          をご確認ください。
-        </p>
-        <p><a href="mailto:japangaa@gmail.com">japangaa@gmail.com</a></p>
-      </div>
-
-      <div class="fact">
         <h2>持ち物</h2>
-        <p>
-          動きやすい服装と飲み物をご用意ください。芝生ではサッカーシューズの方が
-          動きやすいですが、運動靴でも問題ありません。初回のために新しく購入する
-          必要はありません。ボールはこちらで用意します。
-        </p>
-        <p><strong>シャワーもご利用いただけます。</strong></p>
+        <ul class="bring">
+          <li>動きやすい服装</li>
+          <li>飲み物（ボトルをお持ちいただければ、水はこちらにあります）</li>
+          <li>サッカーシューズ、または運動靴</li>
+          <li>着替え（シャワーをご利用いただけます）</li>
+        </ul>
       </div>
     </section>
 
