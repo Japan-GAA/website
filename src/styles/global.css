@@ -631,3 +631,8 @@ a:hover { color: var(--vermilion); }
   width: min(22rem, 80%);
   margin-inline: auto;
 }
+
+/* Bigger social icons. Overrides the earlier .social rules. */
+.social { gap: 1rem; }
+.social a { width: 3.5rem; height: 3.5rem; border-width: 2px; }
+.social svg { width: 1.75rem; height: 1.75rem; }
