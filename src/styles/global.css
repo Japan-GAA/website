@@ -252,3 +252,35 @@ a:hover { color: var(--vermilion); }
   width: 100%; height: auto; display: block; margin-block: 2rem; border-radius: 2px;
 }
 .prose__back { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+
+/* ---- training ---- */
+.factgrid {
+  display: grid; gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  padding-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+.fact { border-top: 3px solid var(--pitch); padding-top: 1rem; }
+.fact h2 {
+  font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--vermilion); margin-bottom: 0.75rem;
+}
+.fact p { font-size: 0.9688rem; margin: 0 0 0.75rem; }
+
+.fees { margin: 1.5rem 0; max-width: var(--measure); }
+.fees > div {
+  display: flex; justify-content: space-between; gap: 1rem;
+  padding: 0.7rem 0; border-bottom: 1px solid var(--line);
+}
+.fees dt { margin: 0; }
+.fees dd {
+  margin: 0; font-family: var(--display); font-weight: 700;
+  font-size: 1.125rem; color: var(--pitch);
+}
+
+.callout {
+  border-left: 3px solid var(--vermilion);
+  padding: 0.9rem 0 0.9rem 1.25rem;
+  margin-block: 1.75rem 0.75rem;
+  font-size: 1.0625rem;
+}
+.muted { color: var(--stone); font-size: 0.9375rem; }

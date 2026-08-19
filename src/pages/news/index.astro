@@ -1,32 +1,21 @@
 ---
-import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
-
-const posts = (await getCollection("news")).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-);
-const fmt = (d: Date) =>
-  d.toLocaleDateString("en-IE", { year: "numeric", month: "long" });
+import { newsFor, urlFor } from "../../lib/news";
+const posts = await newsFor("en");
+const fmt = (d: Date) => d.toLocaleDateString("en-IE", { year: "numeric", month: "long" });
 ---
-<Base
-  lang="en"
-  pageKey="news"
-  title="News — Japan GAA"
-  description="Reports, results and club news from Japan GAA, plus the full newsletter archive from 2019 onwards."
->
+<Base lang="en" pageKey="news" title="News — Japan GAA"
+  description="Reports, results and club news from Japan GAA, plus the full newsletter archive from 2019 onwards.">
   <div class="wrap">
     <header class="pagehead">
       <h1>News</h1>
       <p>Everything happening at the club, and the full newsletter archive back to 2019.</p>
     </header>
-
     <ul class="postlist">
       {posts.map((post) => (
         <li class="postlist__item">
-          <a href={`/news/${post.id}`}>
-            {post.data.cover && (
-              <img src={post.data.cover} alt="" loading="lazy" width="400" height="260" />
-            )}
+          <a href={urlFor(post.id)}>
+            {post.data.cover && <img src={post.data.cover} alt="" loading="lazy" width="400" height="260" />}
             <div>
               <time datetime={post.data.date.toISOString()}>{fmt(post.data.date)}</time>
               <h2>{post.data.title}</h2>

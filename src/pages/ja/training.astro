@@ -1,0 +1,67 @@
+---
+import Base from "../../layouts/Base.astro";
+const MAP = "https://maps.app.goo.gl/DLmB27aQEgWyWzAp7";
+---
+<Base lang="ja" pageKey="training"
+  title="練習について — Japan GAA 日本ゲーリック協会"
+  description="Japan GAAは品川区の八潮北公園で練習しています。未経験者大歓迎、初回参加は無料です。">
+
+  <div class="wrap">
+    <header class="pagehead">
+      <h1>練習について</h1>
+      <p class="hero__lede">
+        初回参加は無料です。未経験の方も大歓迎ですので、お気軽にご参加ください。
+        メンバーのほとんどが、参加するまでゲーリックフットボールを見たことが
+        ありませんでした。ルールを知らなくても大丈夫です。
+      </p>
+    </header>
+
+    <section class="factgrid">
+      <div class="fact">
+        <h2>場所</h2>
+        <p>
+          <strong>八潮北公園</strong><br />
+          〒140-0003 東京都品川区八潮1-3-1
+        </p>
+        <p><a href={MAP} rel="noopener">Googleマップで開く →</a></p>
+        <!-- TODO: 最寄駅と徒歩分数を確認 -->
+      </div>
+
+      <div class="fact">
+        <h2>日時</h2>
+        <!-- TODO: 練習日・時間 -->
+        <p>次回の練習日については、お気軽にお問い合わせください。</p>
+        <p><a href="mailto:japangaa@gmail.com">japangaa@gmail.com</a></p>
+      </div>
+
+      <div class="fact">
+        <h2>持ち物</h2>
+        <p>動きやすい服装、飲み物、運動靴またはサッカーシューズ。ボールはこちらで用意します。</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>会費</h2>
+      <p>今年度より会費が改定されました。2026年度の会費は以下の通りです。</p>
+      <dl class="fees">
+        <div><dt>一般会員</dt><dd>15,000円</dd></div>
+        <div><dt>学生会員</dt><dd>7,500円</dd></div>
+        <div><dt>都度払い（1回）</dt><dd>1,000円</dd></div>
+      </dl>
+      <p>
+        この会費には、年間すべてのトレーニングが含まれます。
+        （参考：昨年は年間40回程トレーニングを実施しました）
+        また、1回ごとの都度払いも可能で1回1,000円です。都度払いでお支払い
+        いただく場合は、上限を正会費額とします。
+      </p>
+      <p class="callout">
+        <strong>初めての方は、お支払いも事前のお手続きも必要ありません。</strong>
+        初回参加は無料です。そのままお越しください。
+      </p>
+      <p class="muted">
+        ご入会後のお支払いは、当日現金・銀行振込・PayPay からお選びいただけます。
+      </p>
+      <p><a class="cta" href="mailto:japangaa@gmail.com">お問い合わせ</a></p>
+    </section>
+  </div>
+</Base>

@@ -1,26 +1,26 @@
 ---
 import { getCollection, render } from "astro:content";
 import Base from "../../layouts/Base.astro";
+import { isJa, slugOf, counterpart } from "../../lib/news";
 
 export async function getStaticPaths() {
   const posts = await getCollection("news");
-  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+  return posts.filter((p) => !isJa(p.id))
+    .map((post) => ({ params: { slug: post.id }, props: { post } }));
 }
 
 const { post } = Astro.props;
 const { Content } = await render(post);
-const fmt = post.data.date.toLocaleDateString("en-IE", {
-  year: "numeric", month: "long", day: "numeric",
-});
+const other = await counterpart(post.id);
+const fmt = post.data.date.toLocaleDateString("en-IE", { year: "numeric", month: "long", day: "numeric" });
 ---
-<Base
-  title={`${post.data.title} — Japan GAA`}
-  description={`${post.data.title} — Japan GAA, Gaelic football in Tokyo.`}
->
+<Base title={`${post.data.title} — Japan GAA`}
+      description={`${post.data.title} — Japan GAA, Gaelic football in Tokyo.`}>
   <article class="wrap prose">
     <header class="pagehead">
       <time datetime={post.data.date.toISOString()}>{fmt}</time>
       <h1>{post.data.title}</h1>
+      {other && <p><a class="lang" href={`/ja/news/${slugOf(post.id)}`} lang="ja" hreflang="ja">日本語</a></p>}
     </header>
     <Content />
     <p class="prose__back"><a href="/news">← All news</a></p>
