@@ -1,4 +1,6 @@
 ---
+import Photo from "../../components/Photo.astro";
+import { PHOTOS } from "../../config/photos.js";
 import Sessions from "../../components/Sessions.astro";
 import Base from "../../layouts/Base.astro";
 const MAP = "https://maps.app.goo.gl/DLmB27aQEgWyWzAp7";
@@ -16,6 +18,8 @@ const MAP = "https://maps.app.goo.gl/DLmB27aQEgWyWzAp7";
         ありませんでした。ルールを知らなくても大丈夫です。
       </p>
     </header>
+
+    <Photo src={PHOTOS.training} alt="Japan GAAの練習風景" wide />
 
     <section class="factgrid">
       <div class="fact">

@@ -1,0 +1,23 @@
+---
+import { COLLAGE } from "../config/photos.js";
+const shots = COLLAGE.filter((p) => p && p.src).slice(0, 4);
+---
+{shots.length > 0 ? (
+  <div class:list={["collage", `collage--${shots.length}`]}>
+    {shots.map((p, i) => (
+      <figure style={`--i:${i}`}>
+        <img src={p.src} alt={p.alt ?? ""} loading={i === 0 ? "eager" : "lazy"} decoding="async" />
+      </figure>
+    ))}
+  </div>
+) : (
+  <svg class="posts" viewBox="0 0 320 260" role="img" aria-label="Gaelic football posts">
+    <g class="bar" fill="none">
+      <line x1="90" y1="30" x2="90" y2="240" />
+      <line x1="230" y1="30" x2="230" y2="240" />
+      <line x1="70" y1="150" x2="250" y2="150" />
+      <line x1="40" y1="240" x2="280" y2="240" />
+    </g>
+    <circle class="ball" cx="160" cy="88" r="15" />
+  </svg>
+)}

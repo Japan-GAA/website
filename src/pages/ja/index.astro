@@ -1,56 +1,63 @@
 ---
-import { Image } from "astro:assets";
-import hero from "../../assets/hero.jpg";
+import Collage from "../../components/Collage.astro";
+import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
----
-<Base
-  lang="ja"
-  pageKey="home"
-  title="Japan GAA 日本ゲーリック協会 — 東京のゲーリックフットボールクラブ"
-  description="日本ゲーリック協会の公式サイトです。東京を拠点に、練習・大会・イベントを行っています。未経験者も大歓迎です。"
->
-  <div class="wrap hero">
-    <div>
-      <p class="hero__eyebrow">Tokyo · 東京</p>
-      <h1>ようこそ！ <em>Céad míle fáilte</em></h1>
-      <p class="hero__lede">
-        日本ゲーリック協会（Japan GAA）のホームページへようこそ！
-        こちらのサイトでは、Japan GAAに纏わる歴史や、今後の活動などを
-        まとめております。
-      </p>
-      <p><a class="cta" href="/ja/training">今後の練習 →</a></p>
-    </div>
-    <svg class="posts" viewBox="0 0 320 260" role="img" aria-label="ゲーリックフットボールのゴールポスト">
-      <g class="bar" fill="none">
-        <line x1="90" y1="30" x2="90" y2="240" />
-        <line x1="230" y1="30" x2="230" y2="240" />
-        <line x1="70" y1="150" x2="250" y2="150" />
-        <line x1="40" y1="240" x2="280" y2="240" />
-      </g>
-      <circle class="ball" cx="160" cy="88" r="15" />
-    </svg>
-  </div>
+import Facts from "../../components/Facts.astro";
+import Sessions from "../../components/Sessions.astro";
+import { urlFor } from "../../lib/news";
 
-  <figure class="band">
-    <Image src={hero} alt="大会でのJapan GAAのメンバー" widths={[640, 1024, 1600]} sizes="100vw" loading="eager" />
-  </figure>
+const latest = (await getCollection("news"))
+  .filter((p) => p.id.startsWith("ja/") || p.data.archived)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+const fmt = (d) => d.toLocaleDateString("ja-JP", { year: "numeric", month: "long" });
+---
+<Base lang="ja" pageKey="home"
+  title="Japan GAA 日本ゲーリック協会 — 東京のゲーリックフットボールクラブ"
+  description="Japan GAAは東京で活動するゲーリックフットボールクラブです。未経験者大歓迎、初回参加は無料。品川区の八潮北公園で練習しています。">
+
+  <section class="hero2 hero2--split">
+    <div class="wrap hero2__inner">
+      <div class="hero2__text">
+      <p class="hero2__eyebrow">Tokyo · 東京 · since 1995</p>
+      <h1>東京で、ゲーリックフットボール</h1>
+      <p class="hero2__fáilte"><em>Céad míle fáilte</em> — ようこそ！</p>
+      <p class="hero2__lede">
+        アイルランドの国技を、品川の芝生のグラウンドで。メンバーのほとんどが、
+        参加するまでゲーリックフットボールを見たこともありませんでした。
+        経験は必要ありません。初回参加は無料です。
+      </p>
+      <p class="hero2__cta">
+        <a class="cta" href="/ja/training">練習に参加する</a>
+        <a class="cta cta--ghost" href="/ja/gaelic-football">競技について</a>
+      </p>
+      </div>
+
+      <Collage />
+
+    </div>
+  </section>
+
+  <Facts lang="ja" />
 
   <section class="panel">
-    <div class="wrap cards">
-      <div class="card">
-        <h3>Japan GAAの歴史</h3>
-        <p>クラブのこれまでの歩みをご紹介します。</p>
-        <p><a href="/ja/history">詳細こちら →</a></p>
+    <div class="wrap split">
+      <div>
+        <h2>次回の練習</h2>
+        <Sessions lang="ja" />
+        <p class="muted">
+          品川区・八潮北公園にて 19:00〜21:00。曜日は回によって変わります。
+        </p>
+        <p><a href="/ja/training">練習の詳細はこちら →</a></p>
       </div>
-      <div class="card">
-        <h3>今後の予定・活動</h3>
-        <p>練習、大会、イベントの予定です。</p>
-        <p><a href="/ja/training">詳細こちら →</a></p>
-      </div>
-      <div class="card">
-        <h3>Japan GAAとは</h3>
-        <p>運営メンバーと選手をご紹介します。</p>
-        <p><a href="/ja/committee">メンバー紹介 →</a></p>
+      <div>
+        <h2>はじめての方へ</h2>
+        <p>
+          ボールは手でキャッチして運び、蹴ることも、拳で打つこともできます。
+          ただし投げることはできません。バーの上に入れると1ポイント、
+          ネットに入れると3点のゴールです。
+        </p>
+        <p><a href="/ja/gaelic-football">2分で分かるルール →</a></p>
       </div>
     </div>
   </section>
@@ -58,20 +65,29 @@ import Base from "../../layouts/Base.astro";
   <section class="panel">
     <div class="wrap">
       <h2>最新ニュース</h2>
-      <p>Japan GAAの活動内容をご覧ください。</p>
-      <p><a href="/ja/news">ニュースレターを読む →</a></p>
+      <ul class="newsgrid">
+        {latest.map((post) => (
+          <li>
+            <a href={urlFor(post.id)}>
+              {post.data.cover && <img src={post.data.cover} alt="" loading="lazy" />}
+              <time>{fmt(post.data.date)}</time>
+              <h3>{post.data.title}</h3>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p><a href="/ja/news">ニュース一覧・アーカイブ →</a></p>
     </div>
   </section>
 
-  <section class="panel">
+  <section class="panel panel--join">
     <div class="wrap">
-      <h2>年会費</h2>
+      <h2>入会について</h2>
       <p>
         Japan GAAは和気あいあいと仲の良いコミュニティーです。未経験でも大歓迎
         ですので、ご興味のある方は体験練習にお気軽にご参加ください。
       </p>
-      <!-- TODO: 参加費・支払い方法（LINEのメモより） -->
-      <p><a class="cta" href="mailto:japangaa@gmail.com">お問い合わせ</a></p>
+      <p><a class="cta" href="/ja/training">練習に参加する</a></p>
     </div>
   </section>
 </Base>

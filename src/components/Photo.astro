@@ -1,0 +1,11 @@
+---
+// Renders nothing at all if the slot is empty, so a missing photo can never
+// leave a broken image on the page.
+const { src, alt = "", caption, wide = false } = Astro.props;
+---
+{src && (
+  <figure class={wide ? "photo photo--wide" : "photo"}>
+    <img src={src} alt={alt} loading="lazy" decoding="async" />
+    {caption && <figcaption>{caption}</figcaption>}
+  </figure>
+)}

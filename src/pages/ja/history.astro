@@ -1,4 +1,6 @@
 ---
+import Photo from "../../components/Photo.astro";
+import { PHOTOS } from "../../config/photos.js";
 import Base from "../../layouts/Base.astro";
 ---
 <Base lang="ja" pageKey="history"
@@ -10,6 +12,8 @@ import Base from "../../layouts/Base.astro";
       <h1>Japan GAAについて</h1>
       <p class="hero__lede">ジャパンGAAの沿革。</p>
     </header>
+
+    <Photo src={PHOTOS.history} alt="Japan GAAのチーム写真" wide />
 
     <h2>沿革</h2>
 

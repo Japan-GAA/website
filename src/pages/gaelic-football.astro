@@ -1,4 +1,6 @@
 ---
+import Photo from "../components/Photo.astro";
+import { PHOTOS } from "../config/photos.js";
 import Video from "../components/Video.astro";
 import Base from "../layouts/Base.astro";
 import ScoringDiagram from "../components/ScoringDiagram.astro";
@@ -41,6 +43,8 @@ import ScoringDiagram from "../components/ScoringDiagram.astro";
       <strong>1–08</strong> means one goal and eight points, which is eleven in
       total. A team on 0–15 beats a team on 2–08.
     </p>
+
+    <Photo src={PHOTOS.sport} alt="A Japan GAA player soloing the ball" wide />
 
     <h2>Moving the ball</h2>
     <ul class="rules">

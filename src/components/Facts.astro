@@ -1,0 +1,26 @@
+---
+const { lang = "en" } = Astro.props;
+const facts = lang === "ja"
+  ? [
+      { n: "1995",  l: "日本支部 設立" },
+      { n: "20+",   l: "メンバーの出身国" },
+      { n: "無料",  l: "初回参加" },
+      { n: "40回",  l: "年間の練習回数" },
+    ]
+  : [
+      { n: "1995",  l: "Founded in Japan" },
+      { n: "20+",   l: "Nationalities" },
+      { n: "Free",  l: "First session" },
+      { n: "40",    l: "Sessions a year" },
+    ];
+---
+<section class="facts">
+  <div class="wrap facts__grid">
+    {facts.map((f) => (
+      <div class="facts__item">
+        <span class="facts__n">{f.n}</span>
+        <span class="facts__l">{f.l}</span>
+      </div>
+    ))}
+  </div>
+</section>

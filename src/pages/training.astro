@@ -1,4 +1,6 @@
 ---
+import Photo from "../components/Photo.astro";
+import { PHOTOS } from "../config/photos.js";
 import Sessions from "../components/Sessions.astro";
 import Base from "../layouts/Base.astro";
 const MAP = "https://maps.app.goo.gl/DLmB27aQEgWyWzAp7";
@@ -16,6 +18,8 @@ const MAP = "https://maps.app.goo.gl/DLmB27aQEgWyWzAp7";
         experience, and you don't need to know the rules.
       </p>
     </header>
+
+    <Photo src={PHOTOS.training} alt="A Japan GAA training session" wide />
 
     <section class="factgrid">
       <div class="fact">

@@ -1,4 +1,6 @@
 ---
+import Photo from "../../components/Photo.astro";
+import { PHOTOS } from "../../config/photos.js";
 import Base from "../../layouts/Base.astro";
 import Video from "../../components/Video.astro";
 import { COMMITTEE } from "../../committee.js";
@@ -15,6 +17,8 @@ import { COMMITTEE } from "../../committee.js";
         練習や大会の運営を担っているメンバーをご紹介します。
       </p>
     </header>
+
+    <Photo src={PHOTOS.committee} alt="Japan GAAの運営メンバー" wide />
 
     <h2>運営メンバー</h2>
     <ul class="roster">

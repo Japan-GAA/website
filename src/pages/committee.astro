@@ -1,4 +1,6 @@
 ---
+import Photo from "../components/Photo.astro";
+import { PHOTOS } from "../config/photos.js";
 import Base from "../layouts/Base.astro";
 import Video from "../components/Video.astro";
 import { COMMITTEE } from "../committee.js";
@@ -15,6 +17,8 @@ import { COMMITTEE } from "../committee.js";
         organise the training, the tournaments and everything in between.
       </p>
     </header>
+
+    <Photo src={PHOTOS.committee} alt="The Japan GAA committee" wide />
 
     <h2>Committee</h2>
     <ul class="roster">

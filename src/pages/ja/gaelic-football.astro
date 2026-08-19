@@ -1,4 +1,6 @@
 ---
+import Photo from "../../components/Photo.astro";
+import { PHOTOS } from "../../config/photos.js";
 import Video from "../../components/Video.astro";
 import Base from "../../layouts/Base.astro";
 import ScoringDiagram from "../../components/ScoringDiagram.astro";
@@ -40,6 +42,8 @@ import ScoringDiagram from "../../components/ScoringDiagram.astro";
       <strong>1–08</strong> は1ゴールと8ポイントで、合計11点です。
       0–15 のチームは 2–08 のチームに勝ちます。
     </p>
+
+    <Photo src={PHOTOS.sport} alt="ソロでボールを運ぶ選手" wide />
 
     <h2>ボールの運び方</h2>
     <ul class="rules">
