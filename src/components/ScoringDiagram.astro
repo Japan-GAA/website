@@ -1,0 +1,24 @@
+---
+const { lang = "en" } = Astro.props;
+const goal  = lang === "ja" ? "ゴール = 3点"  : "Goal — 3 points";
+const point = lang === "ja" ? "ポイント = 1点" : "Point — 1 point";
+const under = lang === "ja" ? "バーの下・ネットの中" : "under the bar, into the net";
+const over  = lang === "ja" ? "バーの上" : "over the bar";
+---
+<figure class="scoring">
+  <svg viewBox="0 0 340 250" role="img" aria-label={`${goal} / ${point}`}>
+    <g stroke="var(--pitch)" stroke-width="6" fill="none" stroke-linecap="square">
+      <line x1="95" y1="20" x2="95" y2="215" />
+      <line x1="245" y1="20" x2="245" y2="215" />
+      <line x1="80" y1="130" x2="260" y2="130" />
+      <line x1="30" y1="215" x2="310" y2="215" />
+    </g>
+    <rect x="95" y="130" width="150" height="85" fill="var(--pitch)" opacity="0.08" />
+    <circle cx="170" cy="72" r="12" fill="var(--vermilion)" />
+    <circle cx="170" cy="175" r="12" fill="var(--pitch)" />
+  </svg>
+  <figcaption>
+    <p><span class="dot dot--point"></span><strong>{point}</strong> — {over}</p>
+    <p><span class="dot dot--goal"></span><strong>{goal}</strong> — {under}</p>
+  </figcaption>
+</figure>
