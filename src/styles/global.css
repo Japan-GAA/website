@@ -575,3 +575,35 @@ a:hover { color: var(--vermilion); }
 }
 .newsgrid a:not(:has(img))::before { aspect-ratio: 3 / 2; margin-bottom: 0.75rem; }
 .postlist__item a:not(:has(img))::before { width: 7rem; height: 5rem; }
+
+/* ---- jersey stock ---- */
+.stock { list-style: none; padding: 0; margin: 1.5rem 0; }
+.stock__row { border-top: 1px solid var(--line); padding: 1rem 0; }
+.stock__row:last-child { border-bottom: 1px solid var(--line); }
+.stock__what { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.stock__name { font-family: var(--display); font-weight: 700; font-size: 1.0625rem; }
+.stock__price { font-family: var(--display); font-weight: 700; color: var(--pitch); }
+.stock__sizes { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; margin: 0.6rem 0 0; }
+.stock__sizes li {
+  border: 1px solid var(--line); border-radius: 2px;
+  padding: 0.2rem 0.6rem; font-size: 0.875rem;
+}
+.stock__sizes strong { color: var(--ink); }
+.stock__sizes span { color: var(--stone); }
+
+/* ---- jersey sections ---- */
+.jersey {
+  display: grid; gap: 1.5rem; align-items: start;
+  grid-template-columns: 1fr;
+  padding: 1.75rem 0; border-top: 1px solid var(--line);
+}
+.jersey:last-of-type { border-bottom: 1px solid var(--line); }
+@media (min-width: 40rem) { .jersey { grid-template-columns: 11rem 1fr; } }
+.jersey__photo { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 3px; display: block; }
+.jersey__body h2 { font-size: 1.25rem; margin: 0 0 0.2rem; }
+.jersey__price { font-family: var(--display); font-weight: 700; color: var(--pitch); margin: 0 0 1rem; }
+.jersey__fit { margin-bottom: 0.9rem; }
+.jersey__fitname {
+  display: block; font-size: 0.75rem; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--stone); margin-bottom: 0.35rem;
+}

@@ -1,0 +1,43 @@
+---
+import Base from "../layouts/Base.astro";
+import Stock from "../components/Stock.astro";
+---
+<Base lang="en" pageKey="jerseys"
+  title="Jerseys — Japan GAA"
+  description="Japan GAA club jerseys, sleeved and sleeveless, in regular and player fit. Current stock and prices.">
+  <div class="wrap prose">
+    <header class="pagehead">
+      <h1>Jerseys</h1>
+      <p class="hero__lede">Club jerseys, sleeved and sleeveless, in regular and player fit.</p>
+    </header>
+
+    <Stock lang="en" />
+
+    <h2>Prices</h2>
+    <ul class="bring">
+      <li>Paid members: ¥1,000 off all jerseys</li>
+      <li>Everyone else: ¥1,000 off from the second jersey onwards</li>
+    </ul>
+
+    <h2>How to order</h2>
+    <p>
+      Email us with the colour, size and fit you want, and we'll sort it out at
+      training. Stock changes, so it's worth confirming before you set your heart
+      on a size.
+    </p>
+    <p><a class="cta" href="mailto:japangaa@gmail.com">Email us about a jersey</a></p>
+
+    <h2>Delivery in Japan</h2>
+    <ul class="bring">
+      <li>One jersey: ¥430 by Letter Pack</li>
+      <li>Two or more: from ¥860, depending on size and weight</li>
+    </ul>
+    <p class="muted">Or collect it at training, at no cost.</p>
+
+    <h2>Ordering from outside Japan</h2>
+    <p>
+      O'Neills carry the Japan GAA club range and ship internationally.
+    </p>
+    <p><a href="https://www.oneills.com/int_en/shop-by-team/gaa/asia-gulf/japan-gaa-club.html" rel="noopener">Japan GAA on O'Neills →</a></p>
+  </div>
+</Base>

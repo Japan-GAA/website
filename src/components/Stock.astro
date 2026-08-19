@@ -1,0 +1,38 @@
+---
+import { jerseyStock, updatedOn } from "../lib/jerseys";
+const { lang = "en" } = Astro.props;
+const stock = await jerseyStock();
+
+const label = (sleeve: string) => {
+  const k = sleeve.toLowerCase();
+  if (lang === "ja") return k.startsWith("sleeveless") ? "ノースリーブ" : "半袖";
+  return k.startsWith("sleeveless") ? "Sleeveless" : "Sleeved";
+};
+const t = lang === "ja"
+  ? { none: "在庫状況はお問い合わせください。", updated: "在庫状況" }
+  : { none: "Get in touch for current availability.", updated: "Stock as of" };
+---
+{stock.length === 0 ? (
+  <p>{t.none}</p>
+) : (
+  <>
+    {stock.map((g) => (
+      <section class="jersey">
+        <img class="jersey__photo" src={`/photos/jersey-${g.slug}.webp`} alt="" loading="lazy" />
+        <div class="jersey__body">
+          <h2>{g.colour} — {label(g.sleeve)}</h2>
+          <p class="jersey__price">¥{g.price}</p>
+          {g.fits.map((f) => (
+            <div class="jersey__fit">
+              <span class="jersey__fitname">{f.fit}</span>
+              <ul class="stock__sizes">
+                {f.sizes.map((s) => <li><strong>{s.size}</strong> <span>×{s.count}</span></li>)}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+    ))}
+    <p class="muted">{t.updated} {updatedOn(lang)}.</p>
+  </>
+)}

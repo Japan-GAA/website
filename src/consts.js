@@ -11,6 +11,7 @@ export const PAGES = [
   { key: "sport",    en: "/gaelic-football", ja: "/ja/gaelic-football", labelEn: "The sport", labelJa: "競技について" },
   { key: "news",     en: "/news",            ja: "/ja/news",            labelEn: "News",      labelJa: "ニュース" },
   { key: "club",     en: "/committee",       ja: "/ja/committee",       labelEn: "The club",  labelJa: "クラブ" },
+  { key: "jerseys",  en: "/jerseys",         ja: "/ja/jerseys",         labelEn: "Jerseys",   labelJa: "ジャージ" },
   { key: "history",  en: "/history",         ja: "/ja/history",         labelEn: "History",   labelJa: "歴史" },
 ];
 
