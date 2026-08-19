@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../../layouts/Base.astro";
+
+const posts = (await getCollection("news")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+const fmt = (d: Date) =>
+  d.toLocaleDateString("ja-JP", { year: "numeric", month: "long" });
+---
+<Base
+  lang="ja"
+  pageKey="news"
+  title="ニュース — Japan GAA"
+  description="Japan GAAの活動報告・大会結果と、2019年からのニュースレターのアーカイブです。"
+>
+  <div class="wrap">
+    <header class="pagehead">
+      <h1>ニュース</h1>
+      <p>クラブの活動内容と、2019年からのニュースレターのアーカイブです。記事は日英併記です。</p>
+    </header>
+
+    <ul class="postlist">
+      {posts.map((post) => (
+        <li class="postlist__item">
+          <a href={`/news/${post.id}`}>
+            {post.data.cover && (
+              <img src={post.data.cover} alt="" loading="lazy" width="400" height="260" />
+            )}
+            <div>
+              <time datetime={post.data.date.toISOString()}>{fmt(post.data.date)}</time>
+              <h2>{post.data.title}</h2>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Base>
