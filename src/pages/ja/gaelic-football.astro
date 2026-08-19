@@ -1,4 +1,6 @@
 ---
+import Collage from "../../components/Collage.astro";
+import { SPORT_SHOTS } from "../../config/photos.js";
 import Photo from "../../components/Photo.astro";
 import { PHOTOS } from "../../config/photos.js";
 import Video from "../../components/Video.astro";
@@ -11,6 +13,8 @@ import ScoringDiagram from "../../components/ScoringDiagram.astro";
   description="ゲーリックフットボールはアイルランドの国技です。手と足の両方を使う、15人制のスポーツ。日本ではまだ知られていない競技を、はじめての方向けに解説します。">
 
   <div class="wrap prose">
+    <Collage shots={SPORT_SHOTS} variant="strip" />
+
     <header class="pagehead">
       <h1>ゲーリックフットボールとは</h1>
       <p class="hero__lede">
@@ -43,7 +47,7 @@ import ScoringDiagram from "../../components/ScoringDiagram.astro";
       0–15 のチームは 2–08 のチームに勝ちます。
     </p>
 
-    <Photo src={PHOTOS.sport} alt="ソロでボールを運ぶ選手" wide />
+
 
     <h2>ボールの運び方</h2>
     <ul class="rules">

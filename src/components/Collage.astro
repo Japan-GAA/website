@@ -1,9 +1,10 @@
 ---
 import { COLLAGE } from "../config/photos.js";
-const shots = COLLAGE.filter((p) => p && p.src).slice(0, 4);
+const { shots: given, variant = "hero" } = Astro.props;
+const shots = (given ?? COLLAGE).filter((p) => p && p.src).slice(0, 4);
 ---
 {shots.length > 0 ? (
-  <div class:list={["collage", `collage--${shots.length}`]}>
+  <div class:list={["collage", `collage--${variant}`, variant === "hero" && `collage--${shots.length}`]}>
     {shots.map((p, i) => (
       <figure style={`--i:${i}`}>
         <img src={p.src} alt={p.alt ?? ""} loading={i === 0 ? "eager" : "lazy"} decoding="async" />

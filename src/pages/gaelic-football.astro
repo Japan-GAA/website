@@ -1,4 +1,6 @@
 ---
+import Collage from "../components/Collage.astro";
+import { SPORT_SHOTS } from "../config/photos.js";
 import Photo from "../components/Photo.astro";
 import { PHOTOS } from "../config/photos.js";
 import Video from "../components/Video.astro";
@@ -10,6 +12,8 @@ import ScoringDiagram from "../components/ScoringDiagram.astro";
   description="Gaelic football is Ireland's national sport: fifteen a side, played with the hands and feet, amateur at every level. A short guide for anyone in Japan who has never seen it.">
 
   <div class="wrap prose">
+    <Collage shots={SPORT_SHOTS} variant="strip" />
+
     <header class="pagehead">
       <h1>What is Gaelic football?</h1>
       <p class="hero__lede">
@@ -44,7 +48,7 @@ import ScoringDiagram from "../components/ScoringDiagram.astro";
       total. A team on 0–15 beats a team on 2–08.
     </p>
 
-    <Photo src={PHOTOS.sport} alt="A Japan GAA player soloing the ball" wide />
+
 
     <h2>Moving the ball</h2>
     <ul class="rules">

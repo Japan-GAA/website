@@ -493,3 +493,19 @@ a:hover { color: var(--vermilion); }
 /* If a photo still crops badly, swap the line above for:
    .prose .photo--wide img { aspect-ratio: auto; }
    which shows the whole image at its natural proportions. */
+
+/* ---- in-article photo strip ---- */
+.collage--strip {
+  aspect-ratio: auto; grid-template-rows: auto;
+  grid-template-columns: repeat(2, 1fr);
+  width: min(72rem, calc(100vw - 2 * var(--gutter)));
+  margin: 2rem 50% 2.5rem; transform: translateX(-50%);
+}
+@media (min-width: 48rem) {
+  .collage--strip { grid-template-columns: repeat(4, 1fr); }
+}
+.collage--strip figure { grid-column: auto !important; grid-row: auto !important; }
+.collage--strip img { aspect-ratio: 3 / 4; }
+
+/* strip sitting at the very top of a page needs no space above it */
+.prose > .collage--strip:first-child { margin-top: 0; margin-bottom: 0; }

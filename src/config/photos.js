@@ -13,7 +13,7 @@ export const PHOTOS = {
   sport:     "",   // someone soloing / catching — the explainer page
   history:   "/photos/history.webp",   // an old team photo
   committee: "",   // committee group shot
-  training:  "",   // a session in progress
+  training:  "/photos/training.webp",   // a session in progress
   news:      "",   // fallback thumbnail for posts with no cover image
 };
 
@@ -26,4 +26,11 @@ export const COLLAGE = [
   { src: "/photos/collage-3.webp", alt: "Japan GAA" },
   { src: "/photos/hero.webp", alt: "Japan GAA players in action" },
   // spare: { src: "/photos/collage-4.webp", alt: "Japan GAA" },
+];
+
+export const SPORT_SHOTS = [
+  { src: "/photos/sport-1.webp", alt: "Japan GAA" },   // TODO: describe this photo
+  { src: "/photos/sport-2.webp", alt: "Japan GAA" },   // TODO: describe this photo
+  { src: "/photos/sport-3.webp", alt: "Japan GAA" },   // TODO: describe this photo
+  { src: "/photos/sport-4.webp", alt: "Japan GAA" },   // TODO: describe this photo
 ];
