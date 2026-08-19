@@ -32,4 +32,4 @@ For the first time, Japan GAA participated in the St. Patrick's Day Parade in Yo
 
   **今後のイベントスケジュール / Upcoming events**
 
-![](/news/7b607e28-222+-+1+(1).webp)
+![](/news/7b607e28-222+-+1+-1.webp)

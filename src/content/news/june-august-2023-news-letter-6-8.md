@@ -31,7 +31,7 @@ JET (The Japan Exchange and Teaching Programme) programme welcome reception was 
 **8月1日 JETプログラムレセプション**
 JETプログラム(The Japan Exchange and Teaching Programme)の参加者へのレセプションが、アンソラスで行われました。日本各地で英語の先生をする方、行政のお仕事をする方約30名と、アイルランドにゆかりのある団体が集い、各団体の活動紹介や団体の魅力について熱弁しました！Japan GAAも活動を紹介。なかにはAGGに参加するという方もおりました！
 
-![](/news/b30cc6fd-IMG_3050+(1).webp)
+![](/news/b30cc6fd-IMG_3050+-1.webp)
 
   Here we come Asian Gaelic Games in KL! We’ll give everything we earned at the training! Wish us luck!
 

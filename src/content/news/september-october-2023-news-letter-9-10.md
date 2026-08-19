@@ -6,7 +6,7 @@ archived: true
 ---
 ![](/news/7516bda9-IMG_5141.webp)
 
-![](/news/fbdcb6e3-IMG_1173+(1).webp)
+![](/news/fbdcb6e3-IMG_1173+-1.webp)
 
   **AGG 2023 クアラルンプール (9月16-17日) / AGG 2023 Kuala Lumpur (16 - 17 of Sep.)**
 

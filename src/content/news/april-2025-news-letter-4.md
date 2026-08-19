@@ -25,4 +25,4 @@ Another Japan GAA social event in April was to watch Japanease pro basketball. �
 
   **今後のイベントスケジュール / Upcoming events**
 
-![](/news/31468c3c-222+-+1+(1).webp)
+![](/news/31468c3c-222+-+1+-1.webp)

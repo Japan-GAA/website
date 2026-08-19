@@ -16,7 +16,7 @@ Emerald Ball is back this year! It has been three years since the silence…! Su
 
 3年ぶりに帰ってきたエメラルドボール！エメラルドボールを通して慈善活動に参加、セントパトリックスデーもお祝いでき、アイルランド一色の夜となりました。素晴らしい生演奏、アイルランドダンスにギネスを堪能しました！
 
-![](/news/daaa9103-IMG_8253+(1).webp)
+![](/news/daaa9103-IMG_8253+-1.webp)
 
   **St. Patrick’s Day Parade - 12th of March / セントパトリックスデーパレード  - 3月12日 - **
 Still having Guiness in our system, we marched throughout the Omotesando with friends, supporters, families, new and old faces of Japan GAA. Eoghan became our forever Saint. He looked amazing !! Recruiting new members at Yoyogi Park will pay off hopefully. Newbies always welcome!

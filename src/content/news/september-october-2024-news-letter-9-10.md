@@ -10,4 +10,4 @@ Big thanks for Laochra Busan GAA for hosting such a great event! We appreciate y
 
 ![](/news/3af131c6-IMG_7949.webp)
 
-![](/news/921bc997-IMG_6437+(1).webp)
+![](/news/921bc997-IMG_6437+-1.webp)

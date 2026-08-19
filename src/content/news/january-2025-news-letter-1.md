@@ -1,7 +1,7 @@
 ---
 title: "January 2025: News letter 1月のニュースレター"
 date: 2025-02-20
-cover: "/news/ade46809-スクリーンショット+(62"
+cover: "/news/ade46809-スクリーンショット+-62.webp"
 archived: true
 ---
 2025年始まりました！3月には早速ベトナムでの招待試合、5月には上海での北アジア大会もあります！今年も盛り上げていきましょう！
@@ -11,7 +11,7 @@ Our 2025 journey has begun! We already have tournament in March in Vietnam and M
 **2024年の活動の振り返りと、2025年のコミッティ決めを行いました！メンバーはこちら！
 At AGM, we reviewed what we have accomplished!  And also we decided our new committee members! Here we are!
 
-![](/news/ade46809-スクリーンショット+(62).webp)
+![](/news/ade46809-スクリーンショット+-62.webp)
 
   **新年会 / New Year Party**
 
@@ -28,4 +28,4 @@ Thank you for joining our ad hoc session, Vietnam Celts chair and fellows. Addit
 
   **今後のイベントスケジュール / Upcoming events**
 
-![](/news/8071d4ae-222+(1).webp)
+![](/news/8071d4ae-222+-1.webp)

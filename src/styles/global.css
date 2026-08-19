@@ -567,3 +567,11 @@ a:hover { color: var(--vermilion); }
   .roster__names { align-items: flex-start; }
   .roster__role { align-self: flex-start; }
 }
+
+/* Posts with no image keep the card the same height as the rest. */
+.newsgrid a:not(:has(img))::before,
+.postlist__item a:not(:has(img))::before {
+  content: ""; display: block; background: var(--pitch); opacity: 0.12; border-radius: 3px;
+}
+.newsgrid a:not(:has(img))::before { aspect-ratio: 3 / 2; margin-bottom: 0.75rem; }
+.postlist__item a:not(:has(img))::before { width: 7rem; height: 5rem; }

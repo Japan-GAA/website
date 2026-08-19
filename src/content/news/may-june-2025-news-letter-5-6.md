@@ -31,7 +31,7 @@ It was such a special day with everyone - including legendary members who have s
 
 A roundtable discussion themed “Women in Business” was held at the Embassy of Ireland. Participants shared insights on the current state of DEI (Diversity, Equity, and Inclusion) in Ireland and Japan, as well as personal experiences and career paths working as businesswomen in Japan. Two members of Japan GAA participated, finding it an educational session that highlighted differences with other countries. This was followed by a dialogue with Damien Cole, the Irish Ambassador to Japan, making for a very meaningful day.
 
-![](/news/e760dbe7-IMG_9683+(1).webp)
+![](/news/e760dbe7-IMG_9683+-1.webp)
 
   **今後のイベントスケジュール / Upcoming events**
 

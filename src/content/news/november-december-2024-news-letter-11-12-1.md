@@ -31,6 +31,6 @@ We can’t ask for more spending time with lovely team mates at Christmas party!
 
   **今後のイベントスケジュール / Upcoming events**
 
-![](/news/3fc827cd-54のコピー+-+1+(3).webp)
+![](/news/3fc827cd-54のコピー+-+1+-3.webp)
 
   Upcoming event schedule / 今後のイベント日程

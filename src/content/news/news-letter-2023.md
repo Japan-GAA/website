@@ -16,7 +16,7 @@ archived: true
 
 ![](/news/ae2fb073-IMG_8900.webp)
 
-![](/news/e36a3d4a-IMG_8903+(1).webp)
+![](/news/e36a3d4a-IMG_8903+-1.webp)
 
   After a long day at a Sports Day, we refreshed ourselves and reunited at Hobgoblin. Thank you for all coming to the after party. Amazing feeling of sláinte (cheers) with more than 30 lads.
 
