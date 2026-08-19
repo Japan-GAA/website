@@ -64,8 +64,11 @@ const here  = Astro.url.pathname;
         <footer class="foot">
       <div class="wrap foot__inner">
         <p class="foot__contact">
-          Please contact <a href="mailto:japangaa@gmail.com">japangaa@gmail.com</a> for your questions!<br />
-          練習やイベント参加に関するご質問は <a href="mailto:japangaa@gmail.com">japangaa@gmail.com</a> までお問い合わせください！
+          {lang === "ja" ? (
+            <>ご質問は <a href="mailto:japangaa@gmail.com">japangaa@gmail.com</a> まで、お気軽にお問い合わせください。</>
+          ) : (
+            <>Any questions? Get in touch at <a href="mailto:japangaa@gmail.com">japangaa@gmail.com</a>.</>
+          )}
         </p>
         <Social />
       </div>
