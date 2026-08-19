@@ -11,7 +11,7 @@ export const PHOTOS = {
   // ladies' team shot, an action shot, and something social.
   // Fewer than 4 is fine; 0 falls back to the goalposts graphic.
   sport:     "",   // someone soloing / catching — the explainer page
-  history:   "",   // an old team photo
+  history:   "/photos/history.webp",   // an old team photo
   committee: "",   // committee group shot
   training:  "",   // a session in progress
   news:      "",   // fallback thumbnail for posts with no cover image
