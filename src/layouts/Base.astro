@@ -1,4 +1,5 @@
 ---
+import Social from "../components/Social.astro";
 import { SITE, PAGES } from "../consts.js";
 import "../styles/global.css";
 
@@ -8,10 +9,6 @@ const page  = PAGES.find((p) => p.key === pageKey);
 const nav   = PAGES.filter((p) => p.key !== "home");
 const here  = Astro.url.pathname;
 
-const socials = [
-  ["Instagram", "https://www.instagram.com/japangaa"],
-  ["Facebook",  "https://www.facebook.com/gaajapan"],
-];
 ---
 <!doctype html>
 <html lang={lang === "ja" ? "ja" : "en"}>
@@ -64,15 +61,16 @@ const socials = [
 
     <main><slot /></main>
 
-    <footer class="foot">
-      <div class="wrap">
+        <footer class="foot">
+      <div class="wrap foot__inner">
         <p class="foot__contact">
           Please contact <a href="mailto:japangaa@gmail.com">japangaa@gmail.com</a> for your questions!<br />
           練習やイベント参加に関するご質問は <a href="mailto:japangaa@gmail.com">japangaa@gmail.com</a> までお問い合わせください！
         </p>
-        <p class="foot__social">
-          {socials.map(([name, url]) => <a href={url} rel="me noopener">{name}</a>)}
-        </p>
+        <Social />
+      </div>
+      <div class="wrap foot__partner">
+        <img src="/photos/ggdf.webp" alt="Global Games Development Fund" width="240" height="80" loading="lazy" />
       </div>
     </footer>
   </body>
