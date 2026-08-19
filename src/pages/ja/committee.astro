@@ -1,0 +1,42 @@
+---
+import Base from "../../layouts/Base.astro";
+import Video from "../../components/Video.astro";
+import { COMMITTEE } from "../../committee.js";
+---
+<Base lang="ja" pageKey="club"
+  title="クラブについて — Japan GAA 日本ゲーリック協会"
+  description="Japan GAAを運営するメンバーと、2025年バンコクのアジア・ゲーリック大会に出場したチームをご紹介します。">
+
+  <div class="wrap prose">
+    <header class="pagehead">
+      <h1>クラブについて</h1>
+      <p class="hero__lede">
+        Japan GAAはすべてボランティアによって運営されています。
+        練習や大会の運営を担っているメンバーをご紹介します。
+      </p>
+    </header>
+
+    <h2>運営メンバー</h2>
+    <ul class="roster">
+      {COMMITTEE.map((r) => (
+        <li>
+          <span class="roster__role">{r.roleJa}</span>
+          <span class="roster__name">{r.people.join(" ・ ")}</span>
+        </li>
+      ))}
+    </ul>
+    <p class="muted">
+      ご質問は <a href="mailto:japangaa@gmail.com">japangaa@gmail.com</a> まで、
+      お気軽にお問い合わせください。
+    </p>
+
+    <h2>チーム</h2>
+    <p>
+      2025年、バンコクで開催されたアジア・ゲーリック大会に出場したチームです。
+      選手紹介は準備中です。
+    </p>
+    <Video id="3TIFTrn7vYs" title="アジア・ゲーリック大会2025" caption="2025年 アジア・ゲーリック大会（バンコク）" />
+
+    <p><a class="cta" href="/ja/training">練習に参加する →</a></p>
+  </div>
+</Base>
