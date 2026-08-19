@@ -1,4 +1,5 @@
 ---
+import { existsSync } from "node:fs";
 import { jerseyStock, updatedOn } from "../lib/jerseys";
 const { lang = "en" } = Astro.props;
 const stock = await jerseyStock();
@@ -18,7 +19,9 @@ const t = lang === "ja"
   <>
     {stock.map((g) => (
       <section class="jersey">
-        <img class="jersey__photo" src={`/photos/jersey-${g.slug}.webp`} alt="" loading="lazy" />
+        {existsSync(`public/photos/jersey-${g.slug}.webp`) && (
+          <img class="jersey__photo" src={`/photos/jersey-${g.slug}.webp`} alt="" loading="lazy" />
+        )}
         <div class="jersey__body">
           <h2>{g.colour} — {label(g.sleeve)}</h2>
           <p class="jersey__price">¥{g.price}</p>

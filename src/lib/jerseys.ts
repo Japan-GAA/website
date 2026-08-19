@@ -62,7 +62,7 @@ export async function jerseyStock(): Promise<Group[]> {
       const key = [colour, sleeve].join("|");
       if (!groups.has(key)) groups.set(key, {
         colour, sleeve, price, total: 0, fits: [],
-        slug: sleeve.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+        slug: `${colour}-${sleeve}`.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
       });
       const g = groups.get(key)!;
       let f = g.fits.find((x) => x.fit === fit);
