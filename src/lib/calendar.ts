@@ -2,7 +2,9 @@ import ical from "node-ical";
 
 // Public iCal address of the Japan GAA "Training" calendar.
 // Google Calendar -> Settings -> Integrate calendar -> Public address in iCal format
-export const ICS_URL = import.meta.env.TRAINING_ICS ?? "";
+export const ICS_URL =
+  import.meta.env.TRAINING_ICS ??
+  "https://calendar.google.com/calendar/ical/89fd7190dca3c1ae6079e488f944440e6a4f11f7c9cb9c00febde89b450e81fe%40group.calendar.google.com/public/basic.ics";
 
 export type Session = { start: Date; end?: Date; title: string; location?: string };
 
