@@ -1,5 +1,6 @@
 ---
-title: "September 2024: News letter 9月のニュースレター"
+title: "September 2024: Newsletter"
+titleJa: "9月のニュースレター"
 date: 2025-01-23
 cover: "/news/3af131c6-IMG_7949.webp"
 archived: true

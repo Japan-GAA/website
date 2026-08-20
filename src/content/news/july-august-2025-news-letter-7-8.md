@@ -1,5 +1,6 @@
 ---
-title: "July-August 2025: News letter 7-8月のニュースレター"
+title: "July-August 2025: Newsletter"
+titleJa: "7-8月のニュースレター"
 date: 2025-10-11
 cover: "/news/3c6c7351-IMG_9690.webp"
 archived: true

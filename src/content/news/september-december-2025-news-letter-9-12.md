@@ -1,5 +1,6 @@
 ---
-title: "September-October 2025: News letter 9-10月のニュースレター"
+title: "September-October 2025: Newsletter"
+titleJa: "9-10月のニュースレター"
 date: 2025-12-27
 cover: "/news/6be1b2da-7FBA37E6-6BF5-44B6-AEC7-771B91C8DE5D.webp"
 archived: true

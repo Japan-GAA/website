@@ -1,5 +1,6 @@
 ---
-title: "March 2025: News letter 3月のニュースレター"
+title: "March 2025: Newsletter"
+titleJa: "3月のニュースレター"
 date: 2025-05-16
 cover: "/news/0e2fbf69-IMG_1508.webp"
 archived: true

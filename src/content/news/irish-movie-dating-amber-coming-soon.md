@@ -1,5 +1,6 @@
 ---
-title: "アイルランド映画『恋人はアンバー』近日公開！Irish Movie \"Dating Amber\" Coming Soon!"
+title: "アイルランド映画『恋人はアンバー』近日公開！Irish Movie \\\"Dating Amber\\\" Coming Soon!"
+titleJa: "アイルランド映画『恋人はアンバー』近日公開！Irish Movie \\\"Dating Amber\\\" Coming Soon!"
 date: 2022-10-12
 cover: "/news/16655835-恋人はアンバー：ポスタービジュアルRE.webp"
 archived: true

@@ -1,5 +1,6 @@
 ---
-title: "July - August 2024: News letter 7 -8月のニュースレター"
+title: "July - August 2024: Newsletter"
+titleJa: "7 -8月のニュースレター"
 date: 2024-09-11
 cover: "/news/6196b809-S__26943510.webp"
 archived: true

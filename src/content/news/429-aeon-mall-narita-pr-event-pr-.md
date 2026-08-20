@@ -1,5 +1,6 @@
 ---
-title: "4/29 AEON Mall Narita PR Event / イオンモール成田 PR イベント"
+title: "4/29 AEON Mall Narita PR Event"
+titleJa: "/ イオンモール成田 PR イベント"
 date: 2022-06-09
 cover: "/news/16547780-thumbnail_IMG_4966.webp"
 archived: true

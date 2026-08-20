@@ -1,5 +1,6 @@
 ---
-title: "April - May 2024: News letter 4 -5月のニュースレター"
+title: "April - May 2024: Newsletter"
+titleJa: "4 -5月のニュースレター"
 date: 2024-06-07
 cover: "/news/f1fe373a-IMG_4274.webp"
 archived: true

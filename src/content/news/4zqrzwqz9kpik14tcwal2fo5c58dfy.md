@@ -1,5 +1,6 @@
 ---
-title: "March 2023: Newsletter３月ニュースレター"
+title: "March 2023: Newsletter３"
+titleJa: "月ニュースレター"
 date: 2023-03-27
 cover: "/news/ddfab141-IMG_8247.webp"
 archived: true

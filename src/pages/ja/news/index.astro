@@ -25,7 +25,7 @@ const fmt = (d) => d.toLocaleDateString("ja-JP", { timeZone: "Asia/Tokyo", month
               <a href={urlFor(post.id)}>
                 <Cover src={post.data.cover} title={post.data.title} />
                 <time>{fmt(post.data.date)}</time>
-                <h3>{post.data.title}</h3>
+                <h3>{post.data.titleJa ?? post.data.title}</h3>
               </a>
             </li>
           ))}

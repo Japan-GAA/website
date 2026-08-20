@@ -1,5 +1,6 @@
 ---
-title: "September - October 2023: News letter 9-10月のニュースレター"
+title: "September - October 2023: Newsletter"
+titleJa: "9-10月のニュースレター"
 date: 2023-10-30
 cover: "/news/7516bda9-IMG_5141.webp"
 archived: true

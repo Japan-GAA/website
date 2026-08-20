@@ -1,5 +1,6 @@
 ---
-title: "January - February 2024: News letter 1-2月のニュースレター"
+title: "January - February 2024: Newsletter"
+titleJa: "1-2月のニュースレター"
 date: 2024-02-27
 cover: "/news/0dfa2ab1-IMG_2673.webp"
 archived: true

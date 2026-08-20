@@ -1,5 +1,6 @@
 ---
-title: "November - December 2023: News letter 11-12月のニュースレター"
+title: "November - December 2023: Newsletter"
+titleJa: "11-12月のニュースレター"
 date: 2023-12-21
 cover: "/news/893d9f74-IMG_1790+-1.webp"
 archived: true

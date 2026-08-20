@@ -1,5 +1,6 @@
 ---
-title: "January 2025: News letter 1月のニュースレター"
+title: "January 2025: Newsletter"
+titleJa: "1月のニュースレター"
 date: 2025-02-20
 cover: "/news/ade46809-スクリーンショット+-62.webp"
 archived: true

@@ -1,5 +1,6 @@
 ---
-title: "April 2025: News letter 4月のニュースレター"
+title: "April 2025: Newsletter"
+titleJa: "4月のニュースレター"
 date: 2025-05-16
 cover: "/news/d6b7c31e-IMG_1532.webp"
 archived: true

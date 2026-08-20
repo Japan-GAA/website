@@ -1,5 +1,6 @@
 ---
-title: "March 2024: News letter 3月のニュースレター"
+title: "March 2024: Newsletter"
+titleJa: "3月のニュースレター"
 date: 2024-04-24
 cover: "/news/65cb45ae-IMG_3830.webp"
 archived: true

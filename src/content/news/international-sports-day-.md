@@ -1,5 +1,6 @@
 ---
-title: "28th of May International Sports Day / ５月２８日（土） 国際スポーツデー 2022"
+title: "28th of May International Sports Day / ５"
+titleJa: "月２８日（土） 国際スポーツデー 2022"
 date: 2022-05-21
 cover: "/news/16530994-GAA+Sports+Day+1.webp"
 archived: true

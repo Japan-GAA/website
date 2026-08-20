@@ -1,5 +1,6 @@
 ---
-title: "November-December 2025: News letter 11-12月のニュースレター"
+title: "November-December 2025: Newsletter"
+titleJa: "11-12月のニュースレター"
 date: 2026-02-11
 cover: "/news/303a90e4-IMG_7106.webp"
 archived: true

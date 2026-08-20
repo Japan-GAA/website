@@ -1,5 +1,6 @@
 ---
-title: "May 2023: News letter 5月のニュースレター"
+title: "May 2023: Newsletter"
+titleJa: "5月のニュースレター"
 date: 2023-06-13
 cover: "/news/013b2f73-完成版Japan+GAA+International+Sports+Day-EN.webp"
 archived: true

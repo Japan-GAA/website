@@ -1,5 +1,6 @@
 ---
-title: "January 2023: Newsletter１月ニュースレター"
+title: "January 2023: Newsletter１"
+titleJa: "月ニュースレター"
 date: 2023-01-26
 cover: "/news/28b4bdf8-IMG_7402.webp"
 archived: true

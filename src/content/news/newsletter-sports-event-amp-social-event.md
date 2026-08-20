@@ -1,5 +1,6 @@
 ---
-title: "Newsletter Sports event &amp; Social Event/スポーツ＆ソーシャルイベント"
+title: "Newsletter Sports event &amp; Social Event"
+titleJa: "/スポーツ＆ソーシャルイベント"
 date: 2022-08-31
 cover: "/news/16619514-IMG_5914.webp"
 archived: true

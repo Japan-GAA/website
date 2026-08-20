@@ -1,5 +1,6 @@
 ---
-title: "April 2023: News letter 4月のニュースレター"
+title: "April 2023: Newsletter"
+titleJa: "4月のニュースレター"
 date: 2023-04-19
 cover: "/news/2c14249e-IMG_8428.webp"
 archived: true

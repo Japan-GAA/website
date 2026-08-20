@@ -1,5 +1,6 @@
 ---
-title: "June - August 2023: News letter 6-8月のニュースレター"
+title: "June - August 2023: Newsletter"
+titleJa: "6-8月のニュースレター"
 date: 2023-09-12
 cover: "/news/40efdbce-IMG_0622.webp"
 archived: true
