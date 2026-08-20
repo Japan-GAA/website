@@ -12,7 +12,7 @@ export const PAGES = [
   { key: "sport",    en: "/gaelic-football", ja: "/ja/gaelic-football", labelEn: "The sport", labelJa: "競技について" },
   { key: "news",     en: "/news",            ja: "/ja/news",            labelEn: "News",      labelJa: "ニュース" },
   { key: "club",     en: "/committee",       ja: "/ja/committee",       labelEn: "The club",  labelJa: "クラブ" },
-  { key: "jerseys",  en: "/jerseys",         ja: "/ja/jerseys",         labelEn: "Jerseys",   labelJa: "ジャージ" },
+  { key: "jerseys",  en: "/jerseys",         ja: "/ja/jerseys",         labelEn: "Jerseys",   labelJa: "ユニフォーム" },
   { key: "history",  en: "/history",         ja: "/ja/history",         labelEn: "History",   labelJa: "歴史" },
 ];
 
@@ -24,5 +24,5 @@ export const NAV = [
   { labelEn: "The sport", labelJa: "競技について", children: ["sport"] },
   { labelEn: "News",      labelJa: "ニュース",   children: ["news"] },
   { labelEn: "The club",  labelJa: "クラブ",     children: ["club", "history"] },
-  { labelEn: "Jerseys",   labelJa: "ジャージ",   children: ["jerseys"] },
+  { labelEn: "Jerseys",   labelJa: "ユニフォーム",   children: ["jerseys"] },
 ];
