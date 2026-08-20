@@ -7,6 +7,7 @@ export type Ev = {
   name: string; nameJa: string;
   notes: string; notesJa: string;
   location: string; locationJa: string;
+  photo: string;
   y: number; m: number; d: number;
   endY?: number; endM?: number; endD?: number;
 };
@@ -84,7 +85,7 @@ async function clubEventsUncached(): Promise<{ upcoming: Ev[]; past: Ev[] }> {
     };
 
     const iN = find("event", "name"), iD = find("date"), iE = find("finish", "end"),
-          iL = find("location"), iX = find("note");
+          iL = find("location"), iX = find("note"), iP = find("photo", "image");
     const jN = jaFor(iN, "event", "name"), jL = jaFor(iL, "location"), jX = jaFor(iX, "note");
 
     const cell = (r: string[], i: number) => (i >= 0 ? (r[i] ?? "").trim() : "");
@@ -102,6 +103,7 @@ async function clubEventsUncached(): Promise<{ upcoming: Ev[]; past: Ev[] }> {
         locationJa: cell(r, jL) || cell(r, iL),
         notes: cell(r, iX),
         notesJa: cell(r, jX) || cell(r, iX),
+        photo: cell(r, iP),
         ...(end ? { endY: end.y, endM: end.m, endD: end.d } : {}),
       };
       // an event counts as upcoming until its finish date has passed

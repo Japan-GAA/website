@@ -1,3 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+[ -f astro.config.mjs ] || { echo "Run this from ~/website"; exit 1; }
+
+cat > src/components/EventList.astro <<'EOF'
 ---
 import type { Ev } from "../lib/events";
 const { events, lang = "en", past = false } = Astro.props;
@@ -37,3 +42,8 @@ const place = (e: Ev) => (ja ? e.locationJa : e.location);
     </li>
   ))}
 </ul>
+EOF
+
+echo "  ok   EventList.astro rewritten as a plain list"
+echo
+npm run build 2>&1 | tail -4

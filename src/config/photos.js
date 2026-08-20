@@ -33,3 +33,10 @@ export const SPORT_SHOTS = [
   { src: "/photos/sport-3.webp", alt: "Japan GAA" },   // TODO: describe this photo
   { src: "/photos/sport-4.webp", alt: "Japan GAA" },   // TODO: describe this photo
 ];
+
+export const EVENT_SHOTS = [
+  { src: "/photos/events-1.webp", alt: "Japan GAA at the St Patrick's Day parade in Yokohama, 2025" },
+  { src: "/photos/events-2.webp", alt: "Japan GAA Sports Day, 2025" },
+  { src: "/photos/events-3.webp", alt: "The Japan GAA Christmas party, 2025" },
+  { src: "/photos/events-4.webp", alt: "Club members at a barbecue by the river" },
+];

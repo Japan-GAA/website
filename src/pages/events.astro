@@ -1,4 +1,6 @@
 ---
+import { EVENT_SHOTS } from "../config/photos.js";
+import Collage from "../components/Collage.astro";
 import Base from "../layouts/Base.astro";
 import EventList from "../components/EventList.astro";
 import { clubEvents } from "../lib/events";
@@ -8,6 +10,7 @@ const { upcoming, past } = await clubEvents();
   title="Events — Japan GAA"
   description="Tournaments, socials and everything else Japan GAA gets up to away from the training pitch in Tokyo.">
   <div class="wrap prose">
+
     <header class="pagehead">
       <h1>Events</h1>
       <p class="hero__lede">
@@ -20,6 +23,8 @@ const { upcoming, past } = await clubEvents();
     {upcoming.length
       ? <EventList events={upcoming} lang="en" />
       : <p>Nothing on the calendar right now. <a href="https://www.instagram.com/japangaa" target="_blank" rel="noopener">Instagram</a> has the latest.</p>}
+
+    <Collage shots={EVENT_SHOTS} variant="strip" />
 
     {past.length > 0 && (
       <>
