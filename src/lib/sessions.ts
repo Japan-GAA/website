@@ -80,11 +80,17 @@ export async function upcomingSessions(limit = 4): Promise<Session[]> {
       head.findIndex((h) => names.some((n) => h.startsWith(n)));
     const iD = find("date"), iS = find("start"), iF = find("finish", "end"), iL = find("location");
 
-    // The Japanese location sits in the next column; its header may be blank,
-    // a duplicate, or mention Japanese.
-    const next = iL >= 0 ? head[iL + 1] : undefined;
-    const iLJa = next !== undefined && (next === "" || next === head[iL] || /japan|日本/.test(next))
-      ? iL + 1 : -1;
+    const jaFor = (i: number, ...words: string[]) => {
+      const byName = head.findIndex(
+        (h) => words.some((w) => h.includes(w)) && /japan|日本/.test(h)
+      );
+      if (byName >= 0 && byName !== i) return byName;
+      if (i < 0) return -1;
+      const next = head[i + 1];
+      if (next === undefined) return -1;
+      return next === "" || next === head[i] ? i + 1 : -1;
+    };
+    const iLJa = jaFor(iL, "location");
 
     const t = todayTokyo();
     const key = (x: { y: number; m: number; d: number }) => x.y * 10000 + x.m * 100 + x.d;

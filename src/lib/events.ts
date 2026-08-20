@@ -69,19 +69,23 @@ export async function clubEvents(): Promise<{ upcoming: Ev[]; past: Ev[] }> {
     const head = rows[0].map((h) => h.trim().toLowerCase());
     const find = (...n: string[]) => head.findIndex((h) => n.some((x) => h.startsWith(x)));
 
-    // The Japanese column sits immediately after its English one. Its header may
-    // be blank, a duplicate of the English header, or mention Japanese.
-    const jaOf = (i: number) => {
+    // A Japanese column is any header mentioning Japanese / 日本語, e.g.
+    // "Notes (Japanese)". Falls back to the next column along if the header
+    // is blank or a duplicate, which is how the sheets were first written.
+    const jaFor = (i: number, ...words: string[]) => {
+      const byName = head.findIndex(
+        (h) => words.some((w) => h.includes(w)) && /japan|日本/.test(h)
+      );
+      if (byName >= 0 && byName !== i) return byName;
       if (i < 0) return -1;
       const next = head[i + 1];
       if (next === undefined) return -1;
-      const looksJa = next === "" || next === head[i] || /japan|日本/.test(next);
-      return looksJa ? i + 1 : -1;
+      return next === "" || next === head[i] ? i + 1 : -1;
     };
 
     const iN = find("event", "name"), iD = find("date"), iE = find("finish", "end"),
           iL = find("location"), iX = find("note");
-    const jN = jaOf(iN), jL = jaOf(iL), jX = jaOf(iX);
+    const jN = jaFor(iN, "event", "name"), jL = jaFor(iL, "location"), jX = jaFor(iX, "note");
 
     const cell = (r: string[], i: number) => (i >= 0 ? (r[i] ?? "").trim() : "");
 
