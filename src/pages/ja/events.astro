@@ -1,0 +1,33 @@
+---
+import Base from "../../layouts/Base.astro";
+import EventList from "../../components/EventList.astro";
+import { clubEvents } from "../../lib/events";
+const { upcoming, past } = await clubEvents();
+---
+<Base lang="ja" pageKey="events"
+  title="イベント — Japan GAA"
+  description="大会や交流イベントなど、毎週の練習以外のJapan GAAの活動をご紹介します。">
+  <div class="wrap prose">
+    <header class="pagehead">
+      <h1>イベント</h1>
+      <p class="hero__lede">
+        大会や交流イベントなど、練習以外の活動です。会員でなくても、どなたでも
+        ご参加いただけます。
+      </p>
+    </header>
+
+    <h2>今後の予定</h2>
+    {upcoming.length
+      ? <EventList events={upcoming} lang="ja" />
+      : <p>現在、予定されているイベントはありません。最新情報は <a href="https://www.instagram.com/japangaa" target="_blank" rel="noopener">Instagram</a> をご覧ください。</p>}
+
+    {past.length > 0 && (
+      <>
+        <h2>これまでの活動</h2>
+        <EventList events={past} lang="ja" past />
+      </>
+    )}
+
+    <p><a class="cta" href="mailto:japangaa@gmail.com">イベントについて問い合わせる</a></p>
+  </div>
+</Base>

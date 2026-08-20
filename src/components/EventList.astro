@@ -1,0 +1,33 @@
+---
+import type { Ev } from "../lib/events";
+const { events, lang = "en", past = false } = Astro.props;
+const ja = lang === "ja";
+
+const M_EN = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const when = (e: Ev) => {
+  const one = (y: number, m: number, d: number) => ja ? `${y}年${m}月${d}日` : `${d} ${M_EN[m-1]} ${y}`;
+  if (e.endY === undefined) return one(e.y, e.m, e.d);
+  if (e.y === e.endY && e.m === e.endM)
+    return ja ? `${e.y}年${e.m}月${e.d}〜${e.endD}日` : `${e.d}–${e.endD} ${M_EN[e.m-1]} ${e.y}`;
+  return `${one(e.y, e.m, e.d)} – ${one(e.endY!, e.endM!, e.endD!)}`;
+};
+const isUrl = (s: string) => /^https?:\/\//.test(s);
+---
+<ul class:list={["events", past && "events--past"]}>
+  {events.map((e: Ev) => (
+    <li class="event">
+      <div class="event__when">{when(e)}</div>
+      <div class="event__body">
+        <h3>{ja ? e.nameJa : e.name}</h3>
+        {(ja ? e.locationJa : e.location) && (
+          <p class="event__where">
+            {isUrl(ja ? e.locationJa : e.location)
+              ? <a href={ja ? e.locationJa : e.location} target="_blank" rel="noopener">{ja ? "地図を見る" : "See the map"}</a>
+              : (ja ? e.locationJa : e.location)}
+          </p>
+        )}
+        {!past && (ja ? e.notesJa : e.notes) && <p class="event__notes">{ja ? e.notesJa : e.notes}</p>}
+      </div>
+    </li>
+  ))}
+</ul>

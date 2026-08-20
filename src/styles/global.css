@@ -738,3 +738,49 @@ a:hover { color: var(--vermilion); }
 /* Red everywhere except the green training panel, where yellow reads better. */
 .sessions__where { color: var(--vermilion); }
 .nextup .sessions__where { color: #f5c542; }
+
+/* ---- events ---- */
+.events { list-style: none; padding: 0; margin: 1.25rem 0 2.5rem; }
+.event {
+  display: grid; gap: 0.25rem 1.5rem; grid-template-columns: 1fr;
+  padding: 1.1rem 0; border-top: 1px solid var(--line);
+}
+.event:last-child { border-bottom: 1px solid var(--line); }
+@media (min-width: 40rem) { .event { grid-template-columns: 11rem 1fr; } }
+.event__when {
+  font-family: var(--display); font-weight: 700; color: var(--pitch);
+  font-size: 0.9375rem;
+}
+.event__body h3 { font-size: 1.0625rem; margin: 0 0 0.2rem; letter-spacing: 0; }
+.event__where { font-size: 0.875rem; margin: 0 0 0.35rem; color: var(--vermilion); }
+.event__where a { color: var(--vermilion); }
+.event__notes { font-size: 0.9375rem; margin: 0; color: #3a4b43; max-width: 44ch; }
+.events--past .event { padding: 0.7rem 0; }
+.events--past .event__when,
+.events--past .event__body h3 { color: var(--stone); font-weight: 500; }
+
+/* ---- grouped navigation ---- */
+.nav__group { position: relative; }
+.nav__toggle {
+  font: inherit; font-size: 0.9375rem; color: var(--ink);
+  background: none; border: 0; cursor: pointer;
+  padding: 0.25rem 0; border-bottom: 2px solid transparent;
+  display: inline-flex; align-items: center; gap: 0.3rem;
+}
+.nav__toggle:hover,
+.nav__toggle[aria-expanded="true"],
+.nav__toggle[aria-current="page"] { border-bottom-color: var(--vermilion); }
+.nav__chev { font-size: 0.7em; line-height: 1; }
+.nav__toggle[aria-expanded="true"] .nav__chev { transform: rotate(180deg); }
+
+.nav__menu {
+  position: absolute; top: calc(100% + 0.5rem); left: 0; z-index: 20;
+  list-style: none; margin: 0; padding: 0.4rem 0;
+  background: var(--chalk); border: 1px solid var(--line); border-radius: 3px;
+  min-width: 10rem; box-shadow: 0 6px 20px rgba(16,34,27,.09);
+}
+.nav__menu a {
+  display: block; padding: 0.5rem 1rem; font-size: 0.9375rem;
+  text-decoration: none; color: var(--ink); border: 0;
+}
+.nav__menu a:hover { background: var(--pitch); color: var(--chalk); }

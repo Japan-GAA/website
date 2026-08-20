@@ -1,12 +1,12 @@
 ---
 import Social from "../components/Social.astro";
-import { SITE, PAGES } from "../consts.js";
+import { SITE, PAGES, NAV } from "../consts.js";
 import "../styles/global.css";
 
 const { title, description, lang = "en", pageKey } = Astro.props;
 const other = lang === "en" ? "ja" : "en";
 const page  = PAGES.find((p) => p.key === pageKey);
-const nav   = PAGES.filter((p) => p.key !== "home");
+const page_for = (k) => PAGES.find((p) => p.key === k);
 const here  = Astro.url.pathname;
 
 ---
@@ -45,11 +45,26 @@ const here  = Astro.url.pathname;
           <span class="wordmark__text">Japan <span>GAA</span></span>
         </a>
         <nav class="nav" aria-label={lang === "ja" ? "メインナビゲーション" : "Main"}>
-          {nav.map((p) => (
-            <a href={p[lang]} aria-current={here.replace(/\/$/, "") === p[lang].replace(/\/$/, "") ? "page" : undefined}>
-              {lang === "ja" ? p.labelJa : p.labelEn}
-            </a>
-          ))}
+          {NAV.map((group) => {
+            const kids = group.children.map(page_for).filter(Boolean);
+            const label = lang === "ja" ? group.labelJa : group.labelEn;
+            const active = kids.some((k) => here.replace(/\/$/, "") === k[lang].replace(/\/$/, ""));
+            return kids.length === 1 ? (
+              <a href={kids[0][lang]} aria-current={active ? "page" : undefined}>{label}</a>
+            ) : (
+              <div class="nav__group">
+                <button type="button" class="nav__toggle" aria-expanded="false"
+                        aria-current={active ? "page" : undefined}>
+                  {label}<span class="nav__chev" aria-hidden="true">▾</span>
+                </button>
+                <ul class="nav__menu" hidden>
+                  {kids.map((k) => (
+                    <li><a href={k[lang]}>{lang === "ja" ? k.labelJa : k.labelEn}</a></li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
         </nav>
         {page && (
           <a class="lang" href={page[other]} lang={other} hreflang={other}>
@@ -76,5 +91,30 @@ const here  = Astro.url.pathname;
         <img src="/photos/ggdf.webp" alt="Global Games Development Fund" width="240" height="80" loading="lazy" />
       </div>
     </footer>
+    <script>
+      // Click-to-open menus: hover doesn't work on touch screens.
+      const groups = document.querySelectorAll(".nav__group");
+      const closeAll = (except) => groups.forEach((g) => {
+        if (g === except) return;
+        g.querySelector(".nav__toggle").setAttribute("aria-expanded", "false");
+        g.querySelector(".nav__menu").hidden = true;
+      });
+      groups.forEach((g) => {
+        const btn = g.querySelector(".nav__toggle");
+        const menu = g.querySelector(".nav__menu");
+        btn.addEventListener("click", () => {
+          const open = btn.getAttribute("aria-expanded") === "true";
+          closeAll(g);
+          btn.setAttribute("aria-expanded", String(!open));
+          menu.hidden = open;
+        });
+      });
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".nav__group")) closeAll();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeAll();
+      });
+    </script>
   </body>
 </html>
