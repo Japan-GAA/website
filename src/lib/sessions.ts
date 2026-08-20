@@ -8,7 +8,7 @@ export const SESSIONS_CSV =
 
 export type Session = {
   y: number; m: number; d: number;
-  start: string; end: string; location: string;
+  start: string; end: string; location: string; locationJa: string;
 };
 
 function parseCSV(text: string): string[][] {
@@ -80,6 +80,12 @@ export async function upcomingSessions(limit = 4): Promise<Session[]> {
       head.findIndex((h) => names.some((n) => h.startsWith(n)));
     const iD = find("date"), iS = find("start"), iF = find("finish", "end"), iL = find("location");
 
+    // The Japanese location sits in the next column; its header may be blank,
+    // a duplicate, or mention Japanese.
+    const next = iL >= 0 ? head[iL + 1] : undefined;
+    const iLJa = next !== undefined && (next === "" || next === head[iL] || /japan|日本/.test(next))
+      ? iL + 1 : -1;
+
     const t = todayTokyo();
     const key = (x: { y: number; m: number; d: number }) => x.y * 10000 + x.m * 100 + x.d;
 
@@ -92,6 +98,8 @@ export async function upcomingSessions(limit = 4): Promise<Session[]> {
         start: (r[iS] ?? "").trim(),
         end: iF >= 0 ? (r[iF] ?? "").trim() : "",
         location: iL >= 0 ? (r[iL] ?? "").trim() : "",
+        locationJa: (iLJa >= 0 ? (r[iLJa] ?? "").trim() : "")
+                    || (iL >= 0 ? (r[iL] ?? "").trim() : ""),
       });
     }
     return out.sort((a, b) => key(a) - key(b)).slice(0, limit);

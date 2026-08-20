@@ -37,7 +37,7 @@ const range = (s) => {
       <li>
         <span class="sessions__date">
           {label(s)}
-          {s.location && <em class="sessions__where">{s.location}</em>}
+          {(ja ? s.locationJa : s.location) && <em class="sessions__where">{ja ? s.locationJa : s.location}</em>}
         </span>
         <span class="sessions__time">{range(s)}</span>
       </li>
