@@ -64,7 +64,7 @@ function todayTokyo() {
 }
 
 /** Upcoming sessions, soonest first. Never throws. */
-export async function upcomingSessions(limit = 4): Promise<Session[]> {
+async function upcomingSessionsUncached(limit = 4): Promise<Session[]> {
   if (!SESSIONS_CSV) return [];
   try {
     // Google's CDN caches published sheets for a few minutes and serves
@@ -116,3 +116,13 @@ export async function upcomingSessions(limit = 4): Promise<Session[]> {
 }
 
 export { tidyTime };
+
+// Astro renders each page separately, so without this the sheet would be
+// fetched once per page. Google rate-limits that and the extra calls come back
+// empty, which is how one language ended up with data and the other without.
+// One fetch per build, shared by every page.
+let __upcomingSessions_cache: Promise<Session[]> | null = null;
+export function upcomingSessions(limit = 4): Promise<Session[]> {
+  if (!__upcomingSessions_cache) __upcomingSessions_cache = upcomingSessionsUncached(limit);
+  return __upcomingSessions_cache;
+}

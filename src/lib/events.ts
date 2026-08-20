@@ -56,7 +56,7 @@ function todayTokyo() {
 const key = (x: { y: number; m: number; d: number }) => x.y * 10000 + x.m * 100 + x.d;
 
 /** { upcoming, past } — never throws. */
-export async function clubEvents(): Promise<{ upcoming: Ev[]; past: Ev[] }> {
+async function clubEventsUncached(): Promise<{ upcoming: Ev[]; past: Ev[] }> {
   const empty = { upcoming: [], past: [] };
   if (!EVENTS_CSV) return empty;
   try {
@@ -115,4 +115,14 @@ export async function clubEvents(): Promise<{ upcoming: Ev[]; past: Ev[] }> {
     console.warn("[events] could not load the events sheet:", err);
     return empty;
   }
+}
+
+// Astro renders each page separately, so without this the sheet would be
+// fetched once per page. Google rate-limits that and the extra calls come back
+// empty, which is how one language ended up with data and the other without.
+// One fetch per build, shared by every page.
+let __clubEvents_cache: Promise<{ upcoming: Ev[]; past: Ev[] }> | null = null;
+export function clubEvents(): Promise<{ upcoming: Ev[]; past: Ev[] }> {
+  if (!__clubEvents_cache) __clubEvents_cache = clubEventsUncached();
+  return __clubEvents_cache;
 }

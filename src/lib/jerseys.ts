@@ -34,7 +34,7 @@ function parseCSV(text: string): string[][] {
 }
 
 /** Grouped stock, or [] if the sheet is unset or unreachable. Never throws. */
-export async function jerseyStock(): Promise<Group[]> {
+async function jerseyStockUncached(): Promise<Group[]> {
   if (!SHEET_CSV) return [];
   try {
     // Google's CDN caches published sheets for a few minutes and serves
@@ -92,3 +92,13 @@ export async function jerseyStock(): Promise<Group[]> {
 export const updatedOn = (lang: "en" | "ja") =>
   new Date().toLocaleDateString(lang === "ja" ? "ja-JP" : "en-IE",
     { timeZone: "Asia/Tokyo", year: "numeric", month: "long", day: "numeric" });
+
+// Astro renders each page separately, so without this the sheet would be
+// fetched once per page. Google rate-limits that and the extra calls come back
+// empty, which is how one language ended up with data and the other without.
+// One fetch per build, shared by every page.
+let __jerseyStock_cache: Promise<Group[]> | null = null;
+export function jerseyStock(limit = 4): Promise<Group[]> {
+  if (!__jerseyStock_cache) __jerseyStock_cache = jerseyStockUncached(limit);
+  return __jerseyStock_cache;
+}
