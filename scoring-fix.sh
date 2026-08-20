@@ -1,3 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+[ -f astro.config.mjs ] || { echo "Run this from ~/website"; exit 1; }
+
+cat > src/components/ScoringDiagram.astro <<'EOF'
 ---
 const { lang = "ja" } = Astro.props;
 const ja = lang === "ja";
@@ -38,3 +43,41 @@ const rows = ja
     </dl>
   </figcaption>
 </figure>
+EOF
+
+cat >> src/styles/global.css <<'EOF'
+
+/* ---- scoring key (replaces the flex caption) ---- */
+.score { margin: 0; }
+.score__row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 1rem;
+  padding: 0.7rem 0 0.7rem 1.4rem;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+.score__row:first-child { border-top: 1px solid var(--line); }
+.score__row::before {
+  content: ""; position: absolute; left: 0; top: 1.15rem;
+  width: 0.7rem; height: 0.7rem; border-radius: 50%;
+}
+.score__row--point::before { background: var(--vermilion); }
+.score__row--two::before   { background: #e08a1e; }
+.score__row--goal::before  { background: var(--pitch); }
+
+.score dt {
+  font-family: var(--display); font-weight: 700; font-size: 1rem; margin: 0;
+}
+.score__value {
+  margin: 0; font-family: var(--display); font-weight: 700;
+  color: var(--pitch); white-space: nowrap; text-align: right;
+}
+.score__how {
+  grid-column: 1 / -1; margin: 0.15rem 0 0;
+  font-size: 0.9375rem; color: #3a4b43;
+}
+EOF
+
+echo
+npm run build 2>&1 | tail -4
