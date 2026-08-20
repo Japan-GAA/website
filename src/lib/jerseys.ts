@@ -37,7 +37,10 @@ function parseCSV(text: string): string[][] {
 export async function jerseyStock(): Promise<Group[]> {
   if (!SHEET_CSV) return [];
   try {
-    const res = await fetch(SHEET_CSV);
+    // Google's CDN caches published sheets for a few minutes and serves
+    // different versions from different edges, so make every request unique.
+    const url = SHEET_CSV + ((SHEET_CSV.includes("?") ? "&" : "?") + "_=" + Date.now());
+    const res = await fetch(url, { cache: "no-store" });
     if (!res.ok) throw new Error(`sheet returned ${res.status}`);
     const rows = parseCSV(await res.text());
     if (rows.length < 2) return [];

@@ -727,3 +727,14 @@ a:hover { color: var(--vermilion); }
   grid-column: 1 / -1; margin: 0.15rem 0 0;
   font-size: 0.9375rem; color: #3a4b43;
 }
+.sessions__where { font-style: normal; color: var(--vermilion); font-size: 0.875em; }
+
+/* Session location on its own line beneath the date, readable on both
+   the pale page and the green panel. */
+.sessions__date { display: flex; flex-direction: column; gap: 0.1rem; }
+.sessions__where { font-style: normal; font-size: 0.8125rem; color: #b8860b; }
+.nextup .sessions__where { color: #f5c542; }
+
+/* Red everywhere except the green training panel, where yellow reads better. */
+.sessions__where { color: var(--vermilion); }
+.nextup .sessions__where { color: #f5c542; }

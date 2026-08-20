@@ -1,55 +1,51 @@
 ---
-import { upcomingSessions } from "../lib/calendar";
+import { upcomingSessions, tidyTime } from "../lib/sessions";
 const { lang = "en" } = Astro.props;
 const sessions = await upcomingSessions();
+const ja = lang === "ja";
 
-const TZ = "Asia/Tokyo";
-const locale = lang === "ja" ? "ja-JP" : "en-IE";
+const DAYS_EN = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const DAYS_JA = ["日","月","火","水","木","金","土"];
+const MONTHS  = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
-const day = (d: Date) =>
-  d.toLocaleDateString(locale, { timeZone: TZ, weekday: "long", month: "long", day: "numeric" });
+const dayName = (s) => new Date(Date.UTC(s.y, s.m - 1, s.d)).getUTCDay();
 
-// Read the wall-clock hour/minute in Tokyo, whatever timezone the build runs in.
-const hm = (d: Date) => {
-  const [h, m] = new Intl.DateTimeFormat("en-GB", {
-    timeZone: TZ, hour: "2-digit", minute: "2-digit", hour12: false,
-  }).format(d).split(":").map(Number);
-  return { h, m };
+const label = (s) => ja
+  ? `${s.m}月${s.d}日（${DAYS_JA[dayName(s)]}）`
+  : `${DAYS_EN[dayName(s)]}, ${s.d} ${MONTHS[s.m - 1]}`;
+
+const clock = (v) => {
+  const t = tidyTime(v);
+  if (typeof t === "string") return t;
+  if (ja) return t.min ? `${t.h}:${String(t.min).padStart(2,"0")}` : `${t.h}時`;
+  return `${t.h % 12 || 12}${t.min ? ":" + String(t.min).padStart(2,"0") : ""}${t.h < 12 ? "am" : "pm"}`;
 };
 
-// "7–9pm", "7:30–9pm", "11am–1pm"   /   "19時〜21時", "19:30〜21:00"
-const range = (start: Date, end?: Date) => {
-  const a = hm(start);
-  const b = end ? hm(end) : null;
-
-  if (lang === "ja") {
-    const one = ({ h, m }: { h: number; m: number }) =>
-      m ? `${h}:${String(m).padStart(2, "0")}` : `${h}時`;
-    return b ? `${one(a)}〜${one(b)}` : one(a);
-  }
-
-  const suffix = (h: number) => (h < 12 ? "am" : "pm");
-  const clock = ({ h, m }: { h: number; m: number }) =>
-    `${h % 12 || 12}${m ? ":" + String(m).padStart(2, "0") : ""}`;
-
-  if (!b) return `${clock(a)}${suffix(a.h)}`;
-  return suffix(a.h) === suffix(b.h)
-    ? `${clock(a)}–${clock(b)}${suffix(b.h)}`
-    : `${clock(a)}${suffix(a.h)}–${clock(b)}${suffix(b.h)}`;
+const range = (s) => {
+  if (!s.end) return clock(s.start);
+  const a = tidyTime(s.start), b = tidyTime(s.end);
+  if (typeof a === "string" || typeof b === "string") return `${clock(s.start)}–${clock(s.end)}`;
+  if (ja) return `${clock(s.start)}〜${clock(s.end)}`;
+  const suf = (h) => (h < 12 ? "am" : "pm");
+  const bare = (t) => `${t.h % 12 || 12}${t.min ? ":" + String(t.min).padStart(2,"0") : ""}`;
+  return suf(a.h) === suf(b.h) ? `${bare(a)}–${bare(b)}${suf(b.h)}` : `${clock(s.start)}–${clock(s.end)}`;
 };
 ---
 {sessions.length > 0 ? (
   <ul class="sessions">
     {sessions.map((s) => (
       <li>
-        <span class="sessions__date">{day(s.start)}</span>
-        <span class="sessions__time">{range(s.start, s.end)}</span>
+        <span class="sessions__date">
+          {label(s)}
+          {s.location && <em class="sessions__where">{s.location}</em>}
+        </span>
+        <span class="sessions__time">{range(s)}</span>
       </li>
     ))}
   </ul>
 ) : (
   <p>
-    {lang === "ja"
+    {ja
       ? "次回の日程は Instagram をご覧いただくか、お問い合わせください。"
       : "Check Instagram or get in touch for the next session."}
   </p>
