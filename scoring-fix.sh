@@ -14,7 +14,7 @@ const rows = ja
     ]
   : [
       { cls: "point", name: "Point",       value: "1 point",  how: "over the bar" },
-      { cls: "two",   name: "Two-pointer", value: "2 points", how: "kicked from outside the 40m arc" },
+      { cls: "two",   name: "Two-pointer", value: "2 points", how: "kicked over from outside the 40m arc" },
       { cls: "goal",  name: "Goal",        value: "3 points", how: "under the bar, into the net" },
     ];
 ---
